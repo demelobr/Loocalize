@@ -2,6 +2,7 @@ package models;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class Promocao {
@@ -15,9 +16,7 @@ public class Promocao {
 	private boolean ativa;
 	
 	//Construtor
-	public Promocao(String titulo, int porcentagemDeDesconto, LocalDate dataDeCriacao,
-			LocalDateTime dataDeExpiracao, boolean ativa) {
-		this.id = this.gerarId();
+	public Promocao(String titulo, int porcentagemDeDesconto, LocalDate dataDeCriacao, LocalDateTime dataDeExpiracao, boolean ativa) {
 		this.titulo = titulo;
 		this.porcentagemDeDesconto = porcentagemDeDesconto;
 		this.dataDeCriacao = dataDeCriacao;
@@ -25,6 +24,9 @@ public class Promocao {
 		this.ativa = ativa;
 	}
 	//Getts e Setts
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getId() {
 		return id;
@@ -69,18 +71,12 @@ public class Promocao {
 	public void setAtiva(boolean ativa) {
 		this.ativa = ativa;
 	}
-	
-	private String gerarId() {
-		String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        StringBuilder sb = new StringBuilder();
 
-        Random random = new Random();
-        for (int i = 0; i < 10; i++) {
-            int index = random.nextInt(caracteres.length());
-            char caractere = caracteres.charAt(index);
-            sb.append(caractere);
-        }
-
-        return sb.toString();
+	@Override
+	public String toString() {
+		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
+		return String.format("<Promoção>\nID: %s\nTítulo: %s\nData de criação: %s\nData de expiração:%s\n% desconto: %d\nAtiva: %s", id, titulo, dataDeCriacao.format(formatoData), dataDeExpiracao.format(formatoDataHora), porcentagemDeDesconto, ativa);
 	}
+
 }
