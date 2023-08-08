@@ -13,23 +13,26 @@ public class Veiculo {
 	private Year ano;
 	private int quilometragem;
 	private int qtdDeLocacao;
-	private double valorDoKmRodadoAMais;
+	private double valorDoKmRodado;
 	private boolean disponivel;
 	
 	//Construtor
-	public Veiculo( String modelo, String marca, String placa, Year ano, int quilometragem, int qtdDeLocacao, double valorDoKmRodadoAMais, boolean disponivel) {
-		this.id = this.gerarId();
+	public Veiculo( String modelo, String marca, String placa, Year ano, int quilometragem, int qtdDeLocacao, double valorDoKmRodado, boolean disponivel) {
 		this.modelo = modelo;
 		this.marca = marca;
 		this.placa = placa;
 		this.ano = ano;
 		this.quilometragem = quilometragem;
 		this.qtdDeLocacao = qtdDeLocacao;
-		this.valorDoKmRodadoAMais = valorDoKmRodadoAMais;
+		this.valorDoKmRodado = valorDoKmRodado;
 		this.disponivel = disponivel;
 	}
 	
 	//Getts e Setts
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -83,11 +86,11 @@ public class Veiculo {
 	}
 
 	public double getValorDoKmRodadoAMais() {
-		return valorDoKmRodadoAMais;
+		return valorDoKmRodado;
 	}
 
 	public void setValorDoKmRodadoAMais(double valorDoKmRodadoAMais) {
-		this.valorDoKmRodadoAMais = valorDoKmRodadoAMais;
+		this.valorDoKmRodado = valorDoKmRodadoAMais;
 	}
 
 	public boolean isDisponivel() {
@@ -99,30 +102,15 @@ public class Veiculo {
 	}
 	
 	//Método para gerar valor por km rodado a mais.
-	public double gerarValorPorKmAMais() {
-       
+	public double gerarValorPorKm() {
+       // Precisa ser feito.
         return 100.0;
     }
-	//Gerar id
-	private String gerarId() {
-		String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        StringBuilder sb = new StringBuilder();
-
-        Random random = new Random();
-        for (int i = 0; i < 10; i++) {
-            int index = random.nextInt(caracteres.length());
-            char caractere = caracteres.charAt(index);
-            sb.append(caractere);
-        }
-
-        return sb.toString();
-	}
 	
 	//toString
 	@Override
 	public String toString(){
-        return String.format("<Veiculo>\nID: %s\nModelo: %s\nMarca: %s\nAno: %s\nPlaca: %s\nQuilometragem: %d\nQtd de locações: %d\nValor/Km a mais: R$%.2f\nDisponível: %s", id, modelo, marca, ano, placa, quilometragem, qtdDeLocacao, valorDoKmRodadoAMais, disponivel);
+        return String.format("<Veiculo>\nID: %s\nModelo: %s\nMarca: %s\nAno: %s\nPlaca: %s\nQuilometragem: %d\nQtd de locações: %d\nValor/Km a mais: R$%.2f\nDisponível: %s", id, modelo, marca, ano, placa, quilometragem, qtdDeLocacao, valorDoKmRodado, disponivel);
     }
-}
-	
 
+}
