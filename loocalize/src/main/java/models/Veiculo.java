@@ -85,11 +85,11 @@ public class Veiculo {
 		this.qtdDeLocacao = qtdDeLocacao;
 	}
 
-	public double getValorDoKmRodadoAMais() {
+	public double getValorDoKmRodado() {
 		return valorDoKmRodado;
 	}
 
-	public void setValorDoKmRodadoAMais(double valorDoKmRodadoAMais) {
+	public void setValorDoKmRodado(double valorDoKmRodadoAMais) {
 		this.valorDoKmRodado = valorDoKmRodadoAMais;
 	}
 

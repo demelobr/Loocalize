@@ -13,21 +13,17 @@ public class Locacao {
 	private Promocao promocao;
 	private LocalDateTime dataHoraDaLocacao;
 	private int qtdDeDiarias;
-	private int limiteDeKmRodados;
 	private double valorDaLocacao;
 	private boolean carroDevolvido;
 	
 	//Construtor
-	public Locacao(Veiculo veiculo, Cliente cliente, Promocao promocao, LocalDateTime dataHoraDaLocacao,
-			int qtdDeDiarias, int limiteDeKmRodados, double valorDaLocacao, boolean carroDevolvido) {
-		this.id = this.gerarId();
+	public Locacao(Veiculo veiculo, Cliente cliente, Promocao promocao, LocalDateTime dataHoraDaLocacao, int qtdDeDiarias, boolean carroDevolvido) {
 		this.veiculo = veiculo;
 		this.cliente = cliente;
 		this.promocao = promocao;
 		this.dataHoraDaLocacao = dataHoraDaLocacao;
 		this.qtdDeDiarias = qtdDeDiarias;
-		this.limiteDeKmRodados = limiteDeKmRodados;
-		this.valorDaLocacao = valorDaLocacao;
+		this.gerarValorDaLocacao();
 		this.carroDevolvido = carroDevolvido;
 	}
 	//Getts e Setts
@@ -79,14 +75,6 @@ public class Locacao {
 		this.qtdDeDiarias = qtdDeDiarias;
 	}
 
-	public int getLimiteDeKmRodados() {
-		return limiteDeKmRodados;
-	}
-
-	public void setLimiteDeKmRodados(int limiteDeKmRodados) {
-		this.limiteDeKmRodados = limiteDeKmRodados;
-	}
-
 	public double getValorDaLocacao() {
 		return valorDaLocacao;
 	}
@@ -106,34 +94,19 @@ public class Locacao {
 	//Métodos
 	// Método para aplicar promoção na locação
 	public void aplicarPromocao() {
-		
+		// Precisamos fazer
 	}
 
 	 // Método para gerar o valor da locação
 	 public void gerarValorDaLocacao() {
-		 
+		this.setValorDaLocacao(this.getQtdDeDiarias()*this.getVeiculo().getValorDoKmRodado());
 	 }
-	 
-	//Gerar id
-		private String gerarId() {
-			String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	        StringBuilder sb = new StringBuilder();
-	
-	        Random random = new Random();
-	        for (int i = 0; i < 10; i++) {
-	            int index = random.nextInt(caracteres.length());
-	            char caractere = caracteres.charAt(index);
-	            sb.append(caractere);
-	        }
-	
-	        return sb.toString();
-		}
 		
-		//toString
-		@Override
-	    public String toString(){
-	        DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
-	        return String.format("<Locação>\nID: %s\nPlaca do veículo: %s\nCliente: %s\nPromoção: %s\nData e hora da Locação: %s\nDiárias: %d\nLimites de Km: %d\nValor da locação: R$%.2f\nCarro devolvido: %s", id, this.getVeiculo().getPlaca(), this.getCliente().getNome(), this.getPromocao().getTitulo(), dataHoraDaLocacao.format(formatoDataHora), qtdDeDiarias, limiteDeKmRodados, valorDaLocacao, carroDevolvido);
-	    }
-}
+	//toString
+	@Override
+	public String toString(){
+		DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
+		return String.format("<Locação>\nID: %s\nPlaca do veículo: %s\nCliente: %s\nPromoção: %s\nData e hora da Locação: %s\nDiárias: %d\nValor da locação: R$%.2f\nCarro devolvido: %s", id, this.getVeiculo().getPlaca(), this.getCliente().getNome(), this.getPromocao().getTitulo(), dataHoraDaLocacao.format(formatoDataHora), qtdDeDiarias, valorDaLocacao, carroDevolvido);
+	}
 
+}
