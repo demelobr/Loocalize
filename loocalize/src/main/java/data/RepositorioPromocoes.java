@@ -32,7 +32,6 @@ public class RepositorioPromocoes implements IRepositorioPromocoes {
         promocao.setPorcentagemDeDesconto(porcentagemDeDesconto);
         promocao.setDataDeExpiracao(dataDeExpiracao);
         promocao.setAtiva(ativa);
-
     }
 
     @Override
@@ -42,7 +41,7 @@ public class RepositorioPromocoes implements IRepositorioPromocoes {
 
     @Override
     public List<Promocao> listarTodasPromocoes() {
-        return null;
+        return promocoes;
     }
 
     @Override
@@ -66,4 +65,5 @@ public class RepositorioPromocoes implements IRepositorioPromocoes {
         }
         return prom;
     }
+
 }

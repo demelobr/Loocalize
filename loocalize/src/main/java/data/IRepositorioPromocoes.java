@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IRepositorioPromocoes {
+
     void inserir(Promocao promocao);
 
     void atualizar(Promocao promocao, String titulo, int porcentagemDeDesconto, LocalDateTime dataDeExpiracao, boolean ativa);
@@ -18,4 +19,5 @@ public interface IRepositorioPromocoes {
     boolean existePromocao(String id);
 
     Promocao buscarPromocao(String id);
+
 }
