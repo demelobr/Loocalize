@@ -20,4 +20,6 @@ public interface IRepositorioPromocoes {
 
     Promocao buscarPromocao(String id);
 
+    String gerarId();
+
 }
