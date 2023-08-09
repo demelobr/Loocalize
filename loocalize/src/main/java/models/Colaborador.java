@@ -12,8 +12,7 @@ public class Colaborador extends Usuario{
 		private String endereco;
 		
 		//Construtor
-		public Colaborador(String usuario, String senha, String email, String nomeCompleto,
-				String cpf, LocalDate dataNascimento, String telefone, String endereco) {
+		public Colaborador(String usuario, String senha, String email, String nomeCompleto, String cpf, LocalDate dataNascimento, String telefone, String endereco) {
 			super(usuario, senha, email, false);
 			this.nomeCompleto = nomeCompleto;
 			this.cpf = cpf;
@@ -59,7 +58,7 @@ public class Colaborador extends Usuario{
 			return endereco;
 		}
 
-		public void setEndereço(String endereco) {
+		public void setEndereco(String endereco) {
 			this.endereco = endereco;
 		}
 		//toString

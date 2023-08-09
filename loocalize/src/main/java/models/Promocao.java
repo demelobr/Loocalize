@@ -76,7 +76,7 @@ public class Promocao {
 	public String toString() {
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
-		return String.format("<Promoção>\nID: %s\nTítulo: %s\nData de criação: %s\nData de expiração:%s\n% desconto: %d\nAtiva: %s", id, titulo, dataDeCriacao.format(formatoData), dataDeExpiracao.format(formatoDataHora), porcentagemDeDesconto, ativa);
+		return String.format("<Promoção>\nID: %s\nTítulo: %s\nData de criação: %s\nData de expiração: %s\nPorcentagem de desconto: %d\nAtiva: %s", id, titulo, dataDeCriacao.format(formatoData), dataDeExpiracao.format(formatoDataHora), porcentagemDeDesconto, ativa);
 	}
 
 }

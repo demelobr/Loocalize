@@ -59,11 +59,11 @@ public class Locacao {
 		this.promocao = promocao;
 	}
 
-	public LocalDateTime getdataHoraDaLocacao() {
+	public LocalDateTime getDataHoraDaLocacao() {
 		return dataHoraDaLocacao;
 	}
 
-	public void setdataHoraDaLocacao(LocalDateTime dataHoraDaLocacao) {
+	public void setDataHoraDaLocacao(LocalDateTime dataHoraDaLocacao) {
 		this.dataHoraDaLocacao = dataHoraDaLocacao;
 	}
 
@@ -106,7 +106,7 @@ public class Locacao {
 	@Override
 	public String toString(){
 		DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
-		return String.format("<Locação>\nID: %s\nPlaca do veículo: %s\nCliente: %s\nPromoção: %s\nData e hora da Locação: %s\nDiárias: %d\nValor da locação: R$%.2f\nCarro devolvido: %s", id, this.getVeiculo().getPlaca(), this.getCliente().getNome(), this.getPromocao().getTitulo(), dataHoraDaLocacao.format(formatoDataHora), qtdDeDiarias, valorDaLocacao, carroDevolvido);
+		return String.format("<Locação>\nID: %s\nID do veículo: %s\nPlaca do veículo: %s\nCliente: %s\nPromoção: %s\nData e hora da Locação: %s\nDiárias: %d\nValor da locação: R$%.2f\nCarro devolvido: %s", id, this.getVeiculo().getId(), this.getVeiculo().getPlaca(), this.getCliente().getNome(), this.getPromocao().getTitulo(), dataHoraDaLocacao.format(formatoDataHora), qtdDeDiarias, valorDaLocacao, carroDevolvido);
 	}
 
 }

@@ -101,6 +101,10 @@ public class Cliente extends Usuario{
         this.locacoesAtivas = locacoesAtivas;
     }
 
+    public void addLocacao(Locacao locacao){
+        this.locacoesAtivas.add(locacao);
+    }
+
     public int getIdade(LocalDate dataNascimento){
         LocalDate dataAtual = LocalDate.now();
         Period periodo = Period.between(dataNascimento, dataAtual);
