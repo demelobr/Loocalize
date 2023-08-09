@@ -14,10 +14,11 @@ public class Veiculo {
 	private int quilometragem;
 	private int qtdDeLocacao;
 	private double valorDoKmRodado;
+	private String fotoDoVeiculo;
 	private boolean disponivel;
 	
 	//Construtor
-	public Veiculo( String modelo, String marca, String placa, Year ano, int quilometragem, int qtdDeLocacao, double valorDoKmRodado, boolean disponivel) {
+	public Veiculo( String modelo, String marca, String placa, Year ano, int quilometragem, int qtdDeLocacao, double valorDoKmRodado, String fotoDoVeiculo, boolean disponivel) {
 		this.modelo = modelo;
 		this.marca = marca;
 		this.placa = placa;
@@ -25,6 +26,7 @@ public class Veiculo {
 		this.quilometragem = quilometragem;
 		this.qtdDeLocacao = qtdDeLocacao;
 		this.valorDoKmRodado = valorDoKmRodado;
+		this.fotoDoVeiculo = fotoDoVeiculo;
 		this.disponivel = disponivel;
 	}
 	
@@ -91,6 +93,14 @@ public class Veiculo {
 
 	public void setValorDoKmRodado(double valorDoKmRodadoAMais) {
 		this.valorDoKmRodado = valorDoKmRodadoAMais;
+	}
+
+	public String getFotoDoVeiculo() {
+		return fotoDoVeiculo;
+	}
+
+	public void setFotoDoVeiculo(String fotoDoVeiculo) {
+		this.fotoDoVeiculo = fotoDoVeiculo;
 	}
 
 	public boolean isDisponivel() {

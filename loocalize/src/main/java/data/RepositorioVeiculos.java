@@ -29,7 +29,7 @@ public class RepositorioVeiculos implements IRepositorioVeiculos {
     }
 
     @Override
-    public void atualizar(Veiculo veiculo, String modelo, String marca, String placa, Year ano, int quilometragem, int qtdDeLocacoes, double valorPorKmRodado, boolean disponivel) {
+    public void atualizar(Veiculo veiculo, String modelo, String marca, String placa, Year ano, int quilometragem, int qtdDeLocacoes, double valorPorKmRodado, String fotoDoVeiculo, boolean disponivel) {
         veiculo.setModelo(modelo);
         veiculo.setMarca(marca);
         veiculo.setPlaca(placa);
@@ -37,6 +37,7 @@ public class RepositorioVeiculos implements IRepositorioVeiculos {
         veiculo.setQuilometragem(quilometragem);
         veiculo.setQtdDeLocacao(qtdDeLocacoes);
         veiculo.setValorDoKmRodado(valorPorKmRodado);
+        veiculo.setFotoDoVeiculo(fotoDoVeiculo);
         veiculo.setDisponivel(disponivel);
     }
 
