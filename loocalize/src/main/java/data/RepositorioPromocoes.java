@@ -4,6 +4,7 @@ import models.Promocao;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RepositorioPromocoes implements IRepositorioPromocoes {
 
@@ -64,6 +65,20 @@ public class RepositorioPromocoes implements IRepositorioPromocoes {
             }
         }
         return prom;
+    }
+
+    public String gerarId() {
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder sb = new StringBuilder();
+
+        Random random = new Random();
+        for (int i = 0; i < 10; i++) {
+            int index = random.nextInt(caracteres.length());
+            char caractere = caracteres.charAt(index);
+            sb.append(caractere);
+        }
+
+        return sb.toString();
     }
 
 }
