@@ -12,7 +12,7 @@ public interface IRepositorioLocacoes {
 
     void inserir(Locacao locacao);
 
-    void atualizar(Locacao locacao, Veiculo veiculo, Cliente cliente, Promocao promocao, LocalDateTime dataHoraDaLocacao, int qtdDeDiarias, double valorDaLocacao, boolean carroDevolvido);
+    void atualizar(Locacao locacao, Veiculo veiculo, Cliente cliente, Promocao promocao, LocalDateTime dataHoraDaLocacao, int qtdDeDiarias, boolean carroDevolvido);
 
     void deletar(Locacao locacao);
 

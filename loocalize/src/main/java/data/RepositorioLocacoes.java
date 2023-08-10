@@ -32,13 +32,13 @@ public class RepositorioLocacoes implements IRepositorioLocacoes{
     }
 
     @Override
-    public void atualizar(Locacao locacao, Veiculo veiculo, Cliente cliente, Promocao promocao, LocalDateTime dataHoraDaLocacao, int qtdDeDiarias, double valorDaLocacao, boolean carroDevolvido) {
+    public void atualizar(Locacao locacao, Veiculo veiculo, Cliente cliente, Promocao promocao, LocalDateTime dataHoraDaLocacao, int qtdDeDiarias, boolean carroDevolvido) {
         locacao.setVeiculo(veiculo);
         locacao.setCliente(cliente);
         locacao.setPromocao(promocao);
         locacao.setDataHoraDaLocacao(dataHoraDaLocacao);
         locacao.setQtdDeDiarias(qtdDeDiarias);
-        locacao.setValorDaLocacao(valorDaLocacao);
+        locacao.gerarValorDaLocacao();
         locacao.setCarroDevolvido(carroDevolvido);
     }
 
