@@ -24,11 +24,11 @@ public class TesteCRUD {
         TesteCRUD testeCRUD = new TesteCRUD();
 
         //Usuários
-        Administrador adm = new Administrador("adm", "adm", "adm@gmail.com");
-        Colaborador colaborador = new Colaborador("colab", "colab", "colab@gmail.com", "Bruno Melo", "11122233344", LocalDate.of(1997, 2, 24), "81999998888", "Rua do Colaborador");
+        Colaborador colaboradorAdm = new Colaborador("adm", "adm", "colabadm@gmail.com", "José Carlos", "11133355500", LocalDate.of(1995, 7, 15), "81988774455", "Rua do Colaborador Adm", true);
+        Colaborador colaborador = new Colaborador("colab", "colab", "colab@gmail.com", "Bruno Melo", "11122233344", LocalDate.of(1997, 2, 24), "81999998888", "Rua do Colaborador", false);
         Cliente cliente = new Cliente("client", "client", "client@gmail.com", "Alex", "22211133355", LocalDate.of(1999, 5, 8), "8199887766", "Rua do cliente", "000999888", LocalDate.of(2022, 3, 9), 0);
 
-        adm.setId(testeCRUD.repUsuarios.gerarId());
+        colaboradorAdm.setId(testeCRUD.repUsuarios.gerarId());
         colaborador.setId(testeCRUD.repUsuarios.gerarId());
         cliente.setId(testeCRUD.repUsuarios.gerarId());
 
@@ -51,23 +51,23 @@ public class TesteCRUD {
         locacao1.setId(testeCRUD.repLocacoes.gerarId());
 
         //Instâncias
-        System.out.println(adm);
-        System.out.println("===============\n");
-        System.out.println(colaborador);
-        System.out.println("===============\n");
-        System.out.println(cliente);
-        System.out.println("===============\n");
-        System.out.println(veiculo);
-        System.out.println("===============\n");
-        System.out.println(veiculo1);
-        System.out.println("===============\n");
-        System.out.println(promocao);
-        System.out.println("===============\n");
-        System.out.println(promocao1);
-        System.out.println("===============\n");
-        System.out.println(locacao);
-        System.out.println("===============\n");
-        System.out.println(locacao1);
+//        System.out.println(colaboradorAdm);
+//        System.out.println("===============\n");
+//        System.out.println(colaborador);
+//        System.out.println("===============\n");
+//        System.out.println(cliente);
+//        System.out.println("===============\n");
+//        System.out.println(veiculo);
+//        System.out.println("===============\n");
+//        System.out.println(veiculo1);
+//        System.out.println("===============\n");
+//        System.out.println(promocao);
+//        System.out.println("===============\n");
+//        System.out.println(promocao1);
+//        System.out.println("===============\n");
+//        System.out.println(locacao);
+//        System.out.println("===============\n");
+//        System.out.println(locacao1);
 
         //Testes dos repositórios das classes básicas
 
@@ -76,16 +76,15 @@ public class TesteCRUD {
         //Obs2: Comente os blocos que não estarão em testes.
 
         //Bloco de Usuario
-        testeCRUD.repUsuarios.inserir(adm);
+        testeCRUD.repUsuarios.inserir(colaboradorAdm);
         testeCRUD.repUsuarios.inserir(colaborador);
         testeCRUD.repUsuarios.inserir(cliente);
         System.out.println(testeCRUD.repUsuarios.existeUsuario("adm"));
         System.out.println("===============\n");
         System.out.println(testeCRUD.repUsuarios.buscarUsuario("client"));
         System.out.println("===============\n");
-        testeCRUD.repUsuarios.atualizarUsuario(adm, "admin", "admin", "admin@gmail.com");
-        testeCRUD.repUsuarios.atualizarColaborador(colaborador, "Colaborador", "12345678900", LocalDate.of(1997, 2, 24), "81998855665", "Rua Nova do Colaborador");
-        testeCRUD.repUsuarios.atualizarCliente(cliente, "Cliente", "22211133355", LocalDate.of(1999, 5, 8), "8199887766", "Rua do cliente", "000999888", LocalDate.of(2022, 3, 9), 5);
+        testeCRUD.repUsuarios.atualizarColaborador(colaborador, "colab", "colab", "colab@gmail.com", "Colaborador", "12345678900", LocalDate.of(1997, 2, 24), "81998855665", "Rua Nova do Colaborador");
+        testeCRUD.repUsuarios.atualizarCliente(cliente, "client", "colab", "colab@gmail.com", "Alex", "22211133355", LocalDate.of(1999, 5, 8), "8199887766", "Rua do cliente", "000999888", LocalDate.of(2022, 3, 9), 5);
         System.out.println(testeCRUD.repUsuarios.listarTodosUsuarios());
         System.out.println("===============\n");
         testeCRUD.repUsuarios.deletar(colaborador);

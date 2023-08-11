@@ -17,7 +17,7 @@ public class Cliente extends Usuario{
     private ArrayList<Locacao> locacoesAtivas;
 
     public Cliente(String usuario, String senha, String email, String nome, String cpf, LocalDate dataNascimento, String telefone, String endereco, String cnh, LocalDate dataDeHabilitacao, int qtdDeLocacoes){
-        super(usuario, senha, email, false);
+        super(usuario, senha, email);
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
@@ -120,6 +120,6 @@ public class Cliente extends Usuario{
     @Override
     public String toString(){
         DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return String.format("<Cliente>\nNome: %s\nCpf: %s\nEmail: %s\nData de Nasciemento: %s\nTelefone: %s\nEndereço: %s\nCNH: %s\nData de Habilitação: %s\nQuantidade de locações: %d\nLocações ativas: %s", nome, cpf, this.getEmail(), dataNascimento.format(formatoData), telefone, endereco, cnh, dataDeHabilitacao.format(formatoData), qtdDeLocacoes, locacoesAtivas);
+        return String.format("<Cliente>\nID: %s\nNome: %s\nCpf: %s\nEmail: %s\nData de Nasciemento: %s\nTelefone: %s\nEndereço: %s\nCNH: %s\nData de Habilitação: %s\nQuantidade de locações: %d\nLocações ativas: %s", this.getId(), nome, cpf, this.getEmail(), dataNascimento.format(formatoData), telefone, endereco, cnh, dataDeHabilitacao.format(formatoData), qtdDeLocacoes, locacoesAtivas);
     }
 }

@@ -9,14 +9,12 @@ public abstract class Usuario {
 		private String usuario;
 		private String senha;
 		private String email;
-		private boolean adm;
 		
 		//Construtor
-		public Usuario(String usuario, String senha, String email, boolean adm) {
+		public Usuario(String usuario, String senha, String email) {
 			this.usuario = usuario;
 			this.senha = senha;
 			this.email = email;
-			this.adm = adm;
 		}
 		
 		//Métodos getts e setts
@@ -49,20 +47,6 @@ public abstract class Usuario {
 
 		public void setEmail(String email) {
 			this.email = email;
-		}
-
-		public boolean isAdm() {
-			return adm;
-		}
-
-		public void setAdm(boolean adm) {
-			this.adm = adm;
-		}
-		
-		//toStirng
-		@Override
-		public String toString(){
-			return String.format("<Administrador>\nNome: %s\nADM: %s", this.getUsuario(), this.isAdm());
 		}
 
 }

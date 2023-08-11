@@ -9,11 +9,9 @@ public interface IRepositorioUsuarios {
 
     void inserir(Usuario usuario);
 
-    void atualizarUsuario(Usuario usuario, String user, String senha, String email);
+    void atualizarColaborador(Usuario usuario, String user, String senha, String email, String nomeCompleto, String cpf, LocalDate dataDeNascimento, String telefone, String endereco);
 
-    void atualizarColaborador(Usuario usuario, String nomeCompleto, String cpf, LocalDate dataDeNascimento, String telefone, String endereco);
-
-    void atualizarCliente(Usuario usuario, String nome, String cpf, LocalDate dataDeNascimento, String telefone, String endereco, String cnh, LocalDate dataDeHabilitacao, int qntDeLocacoes);
+    void atualizarCliente(Usuario usuario, String user, String senha, String email, String nome, String cpf, LocalDate dataDeNascimento, String telefone, String endereco, String cnh, LocalDate dataDeHabilitacao, int qntDeLocacoes);
 
     void deletar(Usuario usuario);
 

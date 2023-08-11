@@ -31,14 +31,10 @@ public class RepositorioUsuarios implements IRepositorioUsuarios{
     }
 
     @Override
-    public void atualizarUsuario(Usuario usuario, String user, String senha, String email) {
+    public void atualizarColaborador(Usuario usuario, String user, String senha, String email, String nomeCompleto, String cpf, LocalDate dataDeNascimento, String telefone, String endereco) {
         usuario.setUsuario(user);
         usuario.setSenha(senha);
         usuario.setEmail(email);
-    }
-
-    @Override
-    public void atualizarColaborador(Usuario usuario, String nomeCompleto, String cpf, LocalDate dataDeNascimento, String telefone, String endereco) {
         ((Colaborador) usuario).setNomeCompleto(nomeCompleto);
         ((Colaborador) usuario).setCpf(cpf);
         ((Colaborador) usuario).setDataNascimento(dataDeNascimento);
@@ -47,7 +43,10 @@ public class RepositorioUsuarios implements IRepositorioUsuarios{
     }
 
     @Override
-    public void atualizarCliente(Usuario usuario, String nome, String cpf, LocalDate dataDeNascimento, String telefone, String endereco, String cnh, LocalDate dataDeHabilitacao, int qntDeLocacoes) {
+    public void atualizarCliente(Usuario usuario, String user, String senha, String email, String nome, String cpf, LocalDate dataDeNascimento, String telefone, String endereco, String cnh, LocalDate dataDeHabilitacao, int qntDeLocacoes) {
+        usuario.setUsuario(user);
+        usuario.setSenha(senha);
+        usuario.setEmail(email);
         ((Cliente) usuario).setNome(nome);
         ((Cliente) usuario).setCpf(cpf);
         ((Cliente) usuario).setDataNascimento(dataDeNascimento);

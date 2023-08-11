@@ -10,15 +10,17 @@ public class Colaborador extends Usuario{
 		private LocalDate dataNascimento;
 		private String telefone;
 		private String endereco;
-		
+		private boolean adm;
+
 		//Construtor
-		public Colaborador(String usuario, String senha, String email, String nomeCompleto, String cpf, LocalDate dataNascimento, String telefone, String endereco) {
-			super(usuario, senha, email, false);
+		public Colaborador(String usuario, String senha, String email, String nomeCompleto, String cpf, LocalDate dataNascimento, String telefone, String endereco, boolean adm) {
+			super(usuario, senha, email);
 			this.nomeCompleto = nomeCompleto;
 			this.cpf = cpf;
 			this.dataNascimento = dataNascimento;
 			this.telefone = telefone;
 			this.endereco = endereco;
+			this.adm = adm;
 		}
 
 		//Métodos Getts e Setts
@@ -61,10 +63,16 @@ public class Colaborador extends Usuario{
 		public void setEndereco(String endereco) {
 			this.endereco = endereco;
 		}
+
+		public boolean isAdm() {
+			return adm;
+		}
+
 		//toString
 		@Override
 	    public String toString(){
 	        DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	        return String.format("<Colaborador>\nID: %s\nADM: %s\nUsuário: %s\nNome Completo: %s\nEmail: %s\nCPF: %s\nData de Nascimento: %s\nTelefone: %s\nEndereço: %s", this.getId(), this.isAdm(), this.getUsuario(), nomeCompleto, this.getEmail(), cpf, dataNascimento.format(formatoData), telefone, endereco);
+	        return String.format("<Colaborador>\nID: %s\nUsuário: %s\nNome Completo: %s\nEmail: %s\nCPF: %s\nData de Nascimento: %s\nTelefone: %s\nEndereço: %s\nAdm: %s", this.getId(), this.getUsuario(), nomeCompleto, this.getEmail(), cpf, dataNascimento.format(formatoData), telefone, endereco, adm);
 	    }
+
 }
