@@ -13,19 +13,19 @@ public class Veiculo {
 	private Year ano;
 	private int quilometragem;
 	private int qtdDeLocacao;
-	private double valorDoKmRodado;
+	private double valorDaDiaria;
 	private String fotoDoVeiculo;
 	private boolean disponivel;
 	
 	//Construtor
-	public Veiculo( String modelo, String marca, String placa, Year ano, int quilometragem, int qtdDeLocacao, double valorDoKmRodado, String fotoDoVeiculo, boolean disponivel) {
+	public Veiculo( String modelo, String marca, String placa, Year ano, int quilometragem, int qtdDeLocacao, double valorDaDiaria, String fotoDoVeiculo, boolean disponivel) {
 		this.modelo = modelo;
 		this.marca = marca;
 		this.placa = placa;
 		this.ano = ano;
 		this.quilometragem = quilometragem;
 		this.qtdDeLocacao = qtdDeLocacao;
-		this.valorDoKmRodado = valorDoKmRodado;
+		this.valorDaDiaria = valorDaDiaria;
 		this.fotoDoVeiculo = fotoDoVeiculo;
 		this.disponivel = disponivel;
 	}
@@ -87,12 +87,12 @@ public class Veiculo {
 		this.qtdDeLocacao = qtdDeLocacao;
 	}
 
-	public double getValorDoKmRodado() {
-		return valorDoKmRodado;
+	public double getValorDaDiaria() {
+		return valorDaDiaria;
 	}
 
-	public void setValorDoKmRodado(double valorDoKmRodadoAMais) {
-		this.valorDoKmRodado = valorDoKmRodadoAMais;
+	public void setValorDaDiaria(double valorDaDiaria) {
+		this.valorDaDiaria = valorDaDiaria;
 	}
 
 	public String getFotoDoVeiculo() {
@@ -120,7 +120,7 @@ public class Veiculo {
 	//toString
 	@Override
 	public String toString(){
-        return String.format("<Veiculo>\nID: %s\nModelo: %s\nMarca: %s\nAno: %s\nPlaca: %s\nQuilometragem: %d\nQtd de locações: %d\nValor/Km a mais: R$%.2f\nDisponível: %s", id, modelo, marca, ano, placa, quilometragem, qtdDeLocacao, valorDoKmRodado, disponivel);
+        return String.format("<Veiculo>\nID: %s\nModelo: %s\nMarca: %s\nAno: %s\nPlaca: %s\nQuilometragem: %d\nQtd de locações: %d\nValor da diária: R$%.2f\nDisponível: %s", id, modelo, marca, ano, placa, quilometragem, qtdDeLocacao, valorDaDiaria, disponivel);
     }
 
 }

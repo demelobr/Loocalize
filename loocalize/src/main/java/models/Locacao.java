@@ -99,7 +99,7 @@ public class Locacao {
 
 	 // Método para gerar o valor da locação
 	 public void gerarValorDaLocacao() {
-		this.setValorDaLocacao(this.getQtdDeDiarias()*this.getVeiculo().getValorDoKmRodado());
+		this.setValorDaLocacao(this.getQtdDeDiarias()*this.getVeiculo().getValorDaDiaria());
 	 }
 		
 	//toString
