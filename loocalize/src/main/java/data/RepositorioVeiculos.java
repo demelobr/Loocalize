@@ -29,14 +29,14 @@ public class RepositorioVeiculos implements IRepositorioVeiculos {
     }
 
     @Override
-    public void atualizar(Veiculo veiculo, String modelo, String marca, String placa, Year ano, int quilometragem, int qtdDeLocacoes, double valorPorKmRodado, String fotoDoVeiculo, boolean disponivel) {
+    public void atualizar(Veiculo veiculo, String modelo, String marca, String placa, Year ano, int quilometragem, int qtdDeLocacoes, double valorDaDiaria, String fotoDoVeiculo, boolean disponivel) {
         veiculo.setModelo(modelo);
         veiculo.setMarca(marca);
         veiculo.setPlaca(placa);
         veiculo.setAno(ano);
         veiculo.setQuilometragem(quilometragem);
         veiculo.setQtdDeLocacao(qtdDeLocacoes);
-        veiculo.setValorDoKmRodado(valorPorKmRodado);
+        veiculo.setValorDaDiaria(valorDaDiaria);
         veiculo.setFotoDoVeiculo(fotoDoVeiculo);
         veiculo.setDisponivel(disponivel);
     }
@@ -49,6 +49,17 @@ public class RepositorioVeiculos implements IRepositorioVeiculos {
     @Override
     public List<Veiculo> listarTodosVeiculos() {
         return veiculos;
+    }
+
+    @Override
+    public  List<Veiculo> listarVeiculosDisponiveis() {
+        ArrayList<Veiculo> listaDeVeiculosDisponiveis = new ArrayList<>();
+        for(Veiculo veiculo : veiculos){
+            if(veiculo.isDisponivel()){
+                listaDeVeiculosDisponiveis.add(veiculo);
+            }
+        }
+        return listaDeVeiculosDisponiveis;
     }
 
     @Override

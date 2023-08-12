@@ -15,6 +15,8 @@ public interface IRepositorioVeiculos {
 
     List<Veiculo> listarTodosVeiculos();
 
+    List<Veiculo> listarVeiculosDisponiveis();
+
     boolean existeVeiculo(String id);
 
     Veiculo buscarVeiculo(String id);
