@@ -14,7 +14,7 @@ public class Cliente extends Usuario{
     private String cnh;
     private LocalDate dataDeHabilitacao;
     private int qtdDeLocacoes;
-    private ArrayList<Locacao> locacoesAtivas;
+    private ArrayList<Locacao> locacoes;
 
     public Cliente(String usuario, String senha, String email, String nome, String cpf, LocalDate dataNascimento, String telefone, String endereco, String cnh, LocalDate dataDeHabilitacao, int qtdDeLocacoes){
         super(usuario, senha, email);
@@ -26,7 +26,7 @@ public class Cliente extends Usuario{
         this.cnh = cnh;
         this.dataDeHabilitacao = dataDeHabilitacao;
         this.qtdDeLocacoes = qtdDeLocacoes;
-        this.locacoesAtivas = new ArrayList<>();
+        this.locacoes = new ArrayList<>();
     }
 
     public String getNome() {
@@ -93,16 +93,16 @@ public class Cliente extends Usuario{
         this.qtdDeLocacoes = qtdDeLocacoes;
     }
 
-    public ArrayList<Locacao> getLocacoesAtivas() {
-        return locacoesAtivas;
+    public ArrayList<Locacao> getLocacoes() {
+        return locacoes;
     }
 
-    public void setLocacoesAtivas(ArrayList<Locacao> locacoesAtivas) {
-        this.locacoesAtivas = locacoesAtivas;
+    public void setLocacoes(ArrayList<Locacao> locacoes) {
+        this.locacoes = locacoes;
     }
 
     public void addLocacao(Locacao locacao){
-        this.locacoesAtivas.add(locacao);
+        this.locacoes.add(locacao);
     }
 
     public int getIdade(LocalDate dataNascimento){
@@ -120,6 +120,6 @@ public class Cliente extends Usuario{
     @Override
     public String toString(){
         DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return String.format("<Cliente>\nID: %s\nNome: %s\nCpf: %s\nEmail: %s\nData de Nasciemento: %s\nTelefone: %s\nEndereço: %s\nCNH: %s\nData de Habilitação: %s\nQuantidade de locações: %d\nLocações ativas: %s", this.getId(), nome, cpf, this.getEmail(), dataNascimento.format(formatoData), telefone, endereco, cnh, dataDeHabilitacao.format(formatoData), qtdDeLocacoes, locacoesAtivas);
+        return String.format("<Cliente>\nID: %s\nNome: %s\nCpf: %s\nEmail: %s\nData de Nasciemento: %s\nTelefone: %s\nEndereço: %s\nCNH: %s\nData de Habilitação: %s\nQuantidade de locações: %d\nLocações: %s", this.getId(), nome, cpf, this.getEmail(), dataNascimento.format(formatoData), telefone, endereco, cnh, dataDeHabilitacao.format(formatoData), qtdDeLocacoes, locacoes);
     }
 }
