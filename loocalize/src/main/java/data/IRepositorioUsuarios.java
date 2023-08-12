@@ -17,6 +17,12 @@ public interface IRepositorioUsuarios {
 
     List<Usuario> listarTodosUsuarios();
 
+    List<Usuario> listarColaboradores();
+
+    List<Usuario> listarAdministradores();
+
+    List<Usuario> listarClientes();
+
     boolean existeUsuario(String usuario);
 
     Usuario buscarUsuario(String usuario);

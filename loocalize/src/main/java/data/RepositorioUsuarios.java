@@ -68,6 +68,39 @@ public class RepositorioUsuarios implements IRepositorioUsuarios{
     }
 
     @Override
+    public List<Usuario> listarColaboradores() {
+        ArrayList<Usuario> listaDeColaboradores = new ArrayList<>();
+        for(Usuario usuario : usuarios){
+            if(usuario instanceof Colaborador && !((Colaborador) usuario).isAdm()){
+                listaDeColaboradores.add(usuario);
+            }
+        }
+        return listaDeColaboradores;
+    }
+
+    @Override
+    public List<Usuario> listarAdministradores() {
+        ArrayList<Usuario> listaDeAdministradores = new ArrayList<>();
+        for(Usuario usuario : usuarios){
+            if(usuario instanceof Colaborador && ((Colaborador) usuario).isAdm()){
+                listaDeAdministradores.add(usuario);
+            }
+        }
+        return listaDeAdministradores;
+    }
+
+    @Override
+    public List<Usuario> listarClientes() {
+        ArrayList<Usuario> listaDeClientes = new ArrayList<>();
+        for(Usuario usuario : usuarios){
+            if(usuario instanceof Cliente){
+                listaDeClientes.add(usuario);
+            }
+        }
+        return listaDeClientes;
+    }
+
+    @Override
     public boolean existeUsuario(String usuario) {
         boolean existe = false;
         for(Usuario user : usuarios){
