@@ -28,6 +28,7 @@ public class RepositorioLocacoes implements IRepositorioLocacoes{
 
     @Override
     public void inserir(Locacao locacao) {
+        locacao.getVeiculo().setDisponivel(false);
         locacoes.add(locacao);
     }
 
