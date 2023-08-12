@@ -17,9 +17,9 @@
 
 <BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <HBox alignment="CENTER" maxHeight="65.0" minHeight="65.0" prefHeight="65.0" styleClass="background-white" stylesheets="@style.css" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" maxHeight="65.0" minHeight="65.0" prefHeight="65.0" styleClass="background-white" stylesheets="@style/style.css" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" maxHeight="45.0" maxWidth="400.0" minHeight="45.0" minWidth="400.0" prefHeight="45.0" prefWidth="400.0" stylesheets="@style.css">
+            <HBox alignment="CENTER" maxHeight="45.0" maxWidth="400.0" minHeight="45.0" minWidth="400.0" prefHeight="45.0" prefWidth="400.0" stylesheets="@style/style.css">
                <styleClass>
                   <String fx:value="push-msg-error" />
                   <String fx:value="shadow" />
