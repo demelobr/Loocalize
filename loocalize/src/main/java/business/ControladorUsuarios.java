@@ -25,7 +25,7 @@ public class ControladorUsuarios implements IControladorUsuarios{
     }
 
     @Override
-    public void cadastrarUsuario(Usuario usuario) {
+    public void inserirUsuario(Usuario usuario) {
         if(usuario != null){
             if(!repUsuarios.existeUsuario(usuario.getUsuario())){
                 if(usuario instanceof Colaborador){
@@ -34,6 +34,9 @@ public class ControladorUsuarios implements IControladorUsuarios{
                            !((Colaborador) usuario).getTelefone().isEmpty() &&
                            !((Colaborador) usuario).getEndereco().isEmpty()){
                            if(!((Colaborador) usuario).getDataNascimento().isBefore(LocalDate.now())){
+                               do{
+                                   usuario.setId(repUsuarios.gerarId());
+                               }while (repUsuarios.existeUsuario(usuario.getId()));
                                repUsuarios.inserir(usuario);
                            }else{
                                //levantar exception "data de nascimento inválida"
@@ -79,31 +82,39 @@ public class ControladorUsuarios implements IControladorUsuarios{
 
     @Override
     public void atualizarColaborador(Usuario usuario, String user, String senha, String email, String nomeCompleto, String cpf, LocalDate dataDeNascimento, String telefone, String endereco) {
-        if(user.isEmpty() || usuario.getUsuario().equals(user)){
-            user = usuario.getUsuario();
+        if(usuario != null){
+            if(repUsuarios.existeUsuario(usuario.getUsuario())){
+                if(user.isEmpty() || usuario.getUsuario().equals(user)){
+                    user = usuario.getUsuario();
+                }
+                if(senha.isEmpty() || usuario.getSenha().equals(senha)){
+                    senha = usuario.getSenha();
+                }
+                if(email.isEmpty() || usuario.getEmail().equals(email)){
+                    email = usuario.getEmail();
+                }
+                if(nomeCompleto.isEmpty() || ((Colaborador) usuario).getNomeCompleto().equals(nomeCompleto)){
+                    nomeCompleto = ((Colaborador) usuario).getNomeCompleto();
+                }
+                if(cpf.isEmpty() || ((Colaborador) usuario).getCpf().equals(cpf)){
+                    cpf = ((Colaborador) usuario).getCpf();
+                }
+                if(dataDeNascimento.isAfter(LocalDate.now())){
+                    dataDeNascimento = ((Colaborador) usuario).getDataNascimento();
+                }
+                if(telefone.isEmpty() || ((Colaborador) usuario).getTelefone().equals(telefone)){
+                    telefone = ((Colaborador) usuario).getTelefone();
+                }
+                if(endereco.isEmpty() || ((Colaborador) usuario).getEndereco().equals(endereco)){
+                    endereco = ((Colaborador) usuario).getEndereco();
+                }
+                repUsuarios.atualizarColaborador(usuario, user, senha, email, nomeCompleto, cpf, dataDeNascimento, telefone, endereco);
+            }else{
+                //Levantar exception de usuario não existe
+            }
+        }else{
+            //Levantar exception de usuario nulo
         }
-        if(senha.isEmpty() || usuario.getSenha().equals(senha)){
-            senha = usuario.getSenha();
-        }
-        if(email.isEmpty() || usuario.getEmail().equals(email)){
-            email = usuario.getEmail();
-        }
-        if(nomeCompleto.isEmpty() || ((Colaborador) usuario).getNomeCompleto().equals(nomeCompleto)){
-            nomeCompleto = ((Colaborador) usuario).getNomeCompleto();
-        }
-        if(cpf.isEmpty() || ((Colaborador) usuario).getCpf().equals(cpf)){
-            cpf = ((Colaborador) usuario).getCpf();
-        }
-        if(dataDeNascimento.isAfter(LocalDate.now())){
-            dataDeNascimento = ((Colaborador) usuario).getDataNascimento();
-        }
-        if(telefone.isEmpty() || ((Colaborador) usuario).getTelefone().equals(telefone)){
-            telefone = ((Colaborador) usuario).getTelefone();
-        }
-        if(endereco.isEmpty() || ((Colaborador) usuario).getEndereco().equals(endereco)){
-            endereco = ((Colaborador) usuario).getEndereco();
-        }
-        repUsuarios.atualizarColaborador(usuario, user, senha, email, nomeCompleto, cpf, dataDeNascimento, telefone, endereco);
     }
 
     @Override
@@ -145,7 +156,7 @@ public class ControladorUsuarios implements IControladorUsuarios{
     }
 
     @Override
-    public void removerUsuario(Usuario usuario) {
+    public void deletarUsuario(Usuario usuario) {
         if(usuario != null){
             if(repUsuarios.existeUsuario(usuario.getUsuario())){
                 repUsuarios.deletar(usuario);

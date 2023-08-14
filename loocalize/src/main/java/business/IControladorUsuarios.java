@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface IControladorUsuarios {
 
-    void cadastrarUsuario(Usuario usuario);
+    void inserirUsuario(Usuario usuario);
 
     void atualizarColaborador(Usuario usuario, String user, String senha, String email, String nomeCompleto, String cpf, LocalDate dataDeNascimento, String telefone, String endereco);
 
     void atualizarCliente(Usuario usuario, String user, String senha, String email, String nome, String cpf, LocalDate dataDeNascimento, String telefone, String endereco, String cnh, LocalDate dataDeHabilitacao, int qntDeLocacoes);
 
-    void removerUsuario(Usuario usuario);
+    void deletarUsuario(Usuario usuario);
 
     List<Usuario> listarTodosUsuarios();
 
