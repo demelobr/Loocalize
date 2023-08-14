@@ -62,6 +62,18 @@ public class RepositorioVeiculos implements IRepositorioVeiculos {
         return listaDeVeiculosDisponiveis;
     }
 
+    //Método de verificar se a placa existe
+    @Override
+    public boolean verificarPlacaExistente(String placa) {
+        boolean verifica = false;
+        for(Veiculo veiculo : veiculos){
+            if(veiculo.getPlaca().equals(placa)){
+                verifica = true;
+            }
+        }
+        return verifica;
+    }
+
     @Override
     public boolean existeVeiculo(String id) {
         boolean existe = false;
@@ -82,6 +94,23 @@ public class RepositorioVeiculos implements IRepositorioVeiculos {
             }
         }
         return veiculoAux;
+    }
+
+    //Busca que pode ser realizada pelos clientes para facilitar a procura ao carro.
+    @Override
+    public List<Veiculo> buscarVeiculosAvancado(String modelo, Year ano, String marca, int quilometragem, boolean disponivel) {
+        List<Veiculo> veiculosEncontrados = new ArrayList<>();
+
+        for (Veiculo veiculo : veiculos) {
+            if (veiculo.getModelo().equalsIgnoreCase(modelo) &&
+                    veiculo.getAno().compareTo(ano) == 0 &&
+                    veiculo.getMarca().equalsIgnoreCase(marca) &&
+                    veiculo.getQuilometragem() == quilometragem &&
+                    veiculo.isDisponivel() == disponivel) {
+                veiculosEncontrados.add(veiculo);
+            }
+        }
+        return veiculosEncontrados;
     }
 
     public String gerarId() {

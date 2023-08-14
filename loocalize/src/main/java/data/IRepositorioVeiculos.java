@@ -17,9 +17,12 @@ public interface IRepositorioVeiculos {
 
     List<Veiculo> listarVeiculosDisponiveis();
 
+    boolean verificarPlacaExistente (String placa);
     boolean existeVeiculo(String id);
 
     Veiculo buscarVeiculo(String id);
+
+    List<Veiculo> buscarVeiculosAvancado(String modelo, Year ano, String marca, int quilometragem, boolean disponivel);
 
     String gerarId();
 
