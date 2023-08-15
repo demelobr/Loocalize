@@ -10,7 +10,7 @@ public interface IRepositorioPromocoes {
 
     void inserir(Promocao promocao);
 
-    void atualizar(Promocao promocao, String titulo, int porcentagemDeDesconto, LocalDateTime dataDeExpiracao, boolean ativa);
+    void atualizar(Promocao promocao, String titulo, int porcentagemDeDesconto, int qtdMinimaDeDiarias, int qtdMinimaDeLocacoes, LocalDateTime dataDeExpiracao, boolean ativa);
 
     void deletar(Promocao promocao);
 
