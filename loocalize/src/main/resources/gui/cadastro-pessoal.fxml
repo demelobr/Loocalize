@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.cadastroClienteController">
    <top>
       <HBox alignment="CENTER" maxHeight="65.0" minHeight="65.0" prefHeight="65.0" BorderPane.alignment="CENTER">
          <children>
@@ -67,14 +67,11 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="900.0">
                      <children>
-                        <Label fx:id="btnVoltarCadastroPessoal" text="Voltar">
+                        <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#TrocarTelaLogin" styleClass="transparent" stylesheets="@style/style.css" text="Voltar">
                            <font>
-                              <Font name="Inter Bold" size="14.0" />
+                              <Font size="14.0" />
                            </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Label>
+                        </Button>
                      </children>
                      <opaqueInsets>
                         <Insets />

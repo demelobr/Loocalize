@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-radius: 10;" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-radius: 10;" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.loginController">
    <left>
       <Pane maxWidth="75.0" minWidth="65.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
    </left>
@@ -31,14 +31,9 @@
    <center>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="333.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/carro1.gif" />
-               </image>
-            </ImageView>
             <VBox alignment="CENTER" prefHeight="449.0" prefWidth="373.0">
                <children>
-                  <Label maxWidth="250.0" minWidth="250.0" prefWidth="250.0" styleClass="title" stylesheets="@style-login.css" text="Loocalize" textFill="#008dd8">
+                  <Label maxWidth="250.0" minWidth="250.0" prefWidth="250.0" styleClass="title" stylesheets="@style/style.css" text="Loocalize" textFill="#008dd8">
                      <font>
                         <Font name="Inter Bold" size="36.0" />
                      </font>
@@ -56,7 +51,7 @@
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="tfUsuarioLogin" maxHeight="40.0" maxWidth="250.0" minHeight="40.0" minWidth="250.0" prefHeight="40.0" prefWidth="250.0" promptText="usuário" styleClass="input-box" stylesheets="@style/style.css">
+                        <TextField fx:id="tfUsuario" maxHeight="40.0" maxWidth="250.0" minHeight="40.0" minWidth="250.0" prefHeight="40.0" prefWidth="250.0" promptText="usuário" styleClass="input-box" stylesheets="@style/style.css">
                            <font>
                               <Font name="Inter Bold" size="14.0" />
                            </font></TextField>
@@ -86,7 +81,7 @@
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin></VBox>
-                  <Button fx:id="btnEntrarLogin" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 10;" styleClass="btn-entrar" stylesheets="@style/style.css" text="Entrar">
+                  <Button fx:id="btnEntrar" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 10;" styleClass="btn-entrar" stylesheets="@style/style.css" text="Entrar">
                      <font>
                         <Font name="Inter Bold" size="14.0" />
                      </font>
@@ -98,19 +93,19 @@
                      </VBox.margin></Button>
                   <HBox alignment="CENTER" maxWidth="300.0" minWidth="300.0" prefHeight="30.0" prefWidth="300.0">
                      <children>
-                        <Label prefHeight="20.0" prefWidth="152.0" text="Não possui uma conta?" textFill="#757575">
+                        <Label prefHeight="20.0" prefWidth="199.0" text="Não possui uma conta?" textFill="#757575">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
                         <Pane prefHeight="30.0" prefWidth="65.0" HBox.hgrow="ALWAYS" />
-                        <Label fx:id="btnCadastroLogin" prefHeight="20.0" prefWidth="116.0" text="Cadastre-se" textFill="#008dd8">
+                        <Button fx:id="btnCadastro" maxHeight="40.0" maxWidth="200.0" minHeight="5.0" minWidth="100.0" mnemonicParsing="false" onAction="#TrocarTelaCadastro" prefHeight="5.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="btn-entrar" stylesheets="@style/style.css" text="Cadastre-se">
                            <font>
                               <Font name="Inter Bold" size="14.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                        </Label>
+                        </Button>
                      </children>
                   </HBox>
                </children></VBox>

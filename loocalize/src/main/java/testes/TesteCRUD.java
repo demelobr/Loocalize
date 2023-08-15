@@ -39,6 +39,7 @@ public class TesteCRUD {
         veiculo1.setId(testeCRUD.repVeiculos.gerarId());
 
         //Promocao
+        /*
         Promocao promocao = new Promocao("DiaDosPais50OFF", 50, LocalDate.now(), LocalDateTime.of(2023, 8, 15, 23, 59), true);
         promocao.setId(testeCRUD.repPromocoes.gerarId());
         Promocao promocao1 = new Promocao("PrimeiroAluguel15OFF", 15, LocalDate.now(), LocalDateTime.of(2023, 8, 15, 23, 59), true);
@@ -49,6 +50,7 @@ public class TesteCRUD {
         locacao.setId(testeCRUD.repLocacoes.gerarId());
         Locacao locacao1 = new Locacao(veiculo1, cliente, promocao1, LocalDateTime.now(), 5, false);
         locacao1.setId(testeCRUD.repLocacoes.gerarId());
+        */
 
         //Instâncias
 //        System.out.println(colaboradorAdm);
