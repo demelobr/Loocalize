@@ -35,7 +35,9 @@ public class ControladorVeiculos implements IControladorVeiculos{
             //throw new IllegalArgumentException("Valores negativos não são permitidos para quilometragem ou valor por km rodado.");
         }
         if (!repositorioVeiculos.verificarPlacaExistente(veiculo.getPlaca())){
-            veiculo.setId(repositorioVeiculos.gerarId());
+            do{
+                veiculo.setId(repositorioVeiculos.gerarId());
+            }while (repositorioVeiculos.existeVeiculo(veiculo.getId()));
             repositorioVeiculos.inserir(veiculo);
         } else {
             //throw new IllegalArgumentException("Já existe um veículo com essa placa. Tente novamente...");
@@ -91,6 +93,11 @@ public class ControladorVeiculos implements IControladorVeiculos{
     @Override
     public List<Veiculo> listarTodosVeiculos(){
         return repositorioVeiculos.listarTodosVeiculos();
+    }
+
+    @Override
+    public boolean existeVeiculo(String id) {
+        return repositorioVeiculos.existeVeiculo(id);
     }
 
     //Busca por id para os colaboradores usarem:

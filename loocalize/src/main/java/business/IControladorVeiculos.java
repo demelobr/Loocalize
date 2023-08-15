@@ -20,6 +20,8 @@ public interface IControladorVeiculos{
     //Lista todos os veículos
     List<Veiculo> listarTodosVeiculos();
 
+    boolean existeVeiculo(String id);
+
     //Busca por id para os colaboradores usarem
     Veiculo buscarVeiculo(String id);
 
