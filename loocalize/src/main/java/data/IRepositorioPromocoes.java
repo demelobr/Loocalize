@@ -16,6 +16,8 @@ public interface IRepositorioPromocoes {
 
     List<Promocao> listarTodasPromocoes();
 
+    List<Promocao> listarTodasPromocoesAtivas();
+
     boolean existePromocao(String id);
 
     Promocao buscarPromocao(String id);

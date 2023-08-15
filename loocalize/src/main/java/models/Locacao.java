@@ -90,12 +90,6 @@ public class Locacao {
 	public void setCarroDevolvido(boolean carroDevolvido) {
 		this.carroDevolvido = carroDevolvido;
 	}
-	
-	//Métodos
-	// Método para aplicar promoção na locação
-	public void aplicarPromocao() {
-		// Precisamos fazer
-	}
 
 	 // Método para gerar o valor da locação
 	 public void gerarValorDaLocacao() {

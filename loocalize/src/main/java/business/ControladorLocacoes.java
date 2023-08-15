@@ -1,23 +1,27 @@
 package business;
 
 import data.IRepositorioLocacoes;
-import data.IRepositorioUsuarios;
+import data.IRepositorioPromocoes;
 import data.RepositorioLocacoes;
-import data.RepositorioUsuarios;
+import data.RepositorioPromocoes;
 import models.Cliente;
 import models.Locacao;
 import models.Promocao;
 import models.Veiculo;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorLocacoes implements IControladorLocacoes{
     private static ControladorLocacoes instance;
     private IRepositorioLocacoes repLocacoes;
+    private IRepositorioPromocoes repPromocoes;
 
     public ControladorLocacoes(){
         this.repLocacoes = RepositorioLocacoes.getInstance();
+        this.repPromocoes = RepositorioPromocoes.getInstance();
     }
 
     public static ControladorLocacoes getInstance(){
@@ -91,6 +95,30 @@ public class ControladorLocacoes implements IControladorLocacoes{
     public void aplicarPromocao(Locacao locacao) {
         if(locacao != null){
             if(repLocacoes.existeLocacao(locacao.getId())){
+                ArrayList<Promocao> listaDePromocoesAtivas = (ArrayList<Promocao>) repPromocoes.listarTodasPromocoesAtivas();
+
+                //Aplicar promoção por qtdDeLocacoes do Cliente
+                if(locacao.getPromocao() == null){
+                    for(Promocao promocao : listaDePromocoesAtivas){
+                        if(locacao.getCliente().getQtdDeLocacoes() >= promocao.getQtdMinimaDeLocacoes()){
+                            locacao.setPromocao(promocao);
+                            break;
+                        }
+                    }
+                }
+                //Aplicar promoção por qtdDeDiarias da Locacao
+                if(locacao.getPromocao() == null){
+                    for(Promocao promocao : listaDePromocoesAtivas){
+                        if(locacao.getQtdDeDiarias() >= promocao.getQtdMinimaDeDiarias()){
+                            locacao.setPromocao(promocao);
+                            break;
+                        }
+                    }
+                }
+
+                if(locacao.getPromocao() == null){
+                    locacao.setPromocao(new Promocao("Nenhuma", 0, 0, 0, LocalDate.now(), LocalDateTime.now(), true));
+                }
 
             }else{
                 // Levantar exception de Locação não existente

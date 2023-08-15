@@ -20,7 +20,7 @@ public interface IRepositorioLocacoes {
 
     boolean existeLocacao(String id);
 
-    Locacao buscarUsuario(String id);
+    Locacao buscarLocacao(String id);
 
     String gerarId();
 

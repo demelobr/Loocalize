@@ -48,6 +48,17 @@ public class RepositorioPromocoes implements IRepositorioPromocoes {
     }
 
     @Override
+    public List<Promocao> listarTodasPromocoesAtivas() {
+        ArrayList<Promocao> listaDePromocoesAtivas = new ArrayList<>();
+        for(Promocao promocao : promocoes){
+            if(promocao.isAtiva()){
+                listaDePromocoesAtivas.add(promocao);
+            }
+        }
+        return listaDePromocoesAtivas;
+    }
+
+    @Override
     public boolean existePromocao(String id) {
         boolean existe = false;
         for(Promocao promocao : promocoes){

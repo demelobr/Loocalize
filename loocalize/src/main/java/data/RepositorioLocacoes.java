@@ -65,7 +65,7 @@ public class RepositorioLocacoes implements IRepositorioLocacoes{
     }
 
     @Override
-    public Locacao buscarUsuario(String id) {
+    public Locacao buscarLocacao(String id) {
         Locacao locacaoAux = null;
         for(Locacao locacao : locacoes){
             if(locacao.getId().equals(id)){
