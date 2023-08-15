@@ -27,10 +27,26 @@ public class ControladorPromocoes implements IControladorPromocoes {
 
 
     public void inserirPromocao(Promocao promocao) {
-        repPromocoes.inserir(promocao);
+        if(promocao != null){
+            if(!repPromocoes.existePromocao(promocao.getId())){
+                if (!promocao.getTitulo().isEmpty() && promocao.getPorcentagemDeDesconto() >= 0 &&
+                        promocao.getPorcentagemDeDesconto() <= 100 && promocao.getDataDeExpiracao().isAfter(LocalDateTime.now())){
+                    do{
+                        promocao.setId(repPromocoes.gerarId());
+                    }while (repPromocoes.existePromocao(promocao.getId()));
+                    repPromocoes.inserir(promocao);
+                }
+
+            }else{
+                // Promoção já existe
+            }
+        }else{
+            // Promoção nula
+        }
+
     }
 
-    public void atualizarPromocao(Promocao promocao, String titulo, int porcentagemDeDesconto, LocalDateTime dataDeExpiracao, boolean ativa) {
+    public void atualizarPromocao(Promocao promocao, String titulo, int porcentagemDeDesconto, int qtdMinimaDeDiarias, int qtdMinimaDeLocacoes, LocalDateTime dataDeExpiracao, boolean ativa) {
 
         if (promocao != null) {
             if (repPromocoes.existePromocao(promocao.getId())) {
@@ -45,20 +61,34 @@ public class ControladorPromocoes implements IControladorPromocoes {
                 }
 
                 if (dataDeExpiracao.isBefore(LocalDateTime.now())) {
-                    dataDeExpiracao = (promocao).getDataDeExpiracao();
+                    dataDeExpiracao = promocao.getDataDeExpiracao();
                 }
-                repPromocoes.atualizar(promocao, titulo, porcentagemDeDesconto, dataDeExpiracao, ativa);
+                if(qtdMinimaDeDiarias <= 0){
+                    qtdMinimaDeDiarias = promocao.getQtdMinimaDeDiarias();
+                }
+                if(qtdMinimaDeLocacoes <= 0){
+                    qtdMinimaDeLocacoes = promocao.getQtdMinimaDeLocacoes();
+                }
+                repPromocoes.atualizar(promocao, titulo, porcentagemDeDesconto, qtdMinimaDeDiarias, qtdMinimaDeLocacoes, dataDeExpiracao, ativa);
 
             }else{
                 //exeption promocao nao existe
             }
         }else{
-                //exeption promocao nula
+            //exeption promocao nula
         }
     }
 
     public void deletarPromocao(Promocao promocao){
-        repPromocoes.deletar(promocao);
+        if(promocao != null){
+            if (repPromocoes.existePromocao(promocao.getId())) {
+                repPromocoes.deletar(promocao);
+            }else{
+                //Levantar exeception promocao ! existe
+            }
+        }else{
+            //Levantar exception promocao nula
+        }
     }
 
     public List<Promocao> listarTodasPromocoes(){
