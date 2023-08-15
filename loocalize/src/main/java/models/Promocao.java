@@ -11,14 +11,18 @@ public class Promocao {
 	private String id;
 	private String titulo;
 	private int porcentagemDeDesconto;
+	private int qtdMinimaDeDiarias;
+	private int qtdMinimaDeLocacoes;
 	private LocalDate dataDeCriacao;
 	private LocalDateTime dataDeExpiracao;
 	private boolean ativa;
-	
+
 	//Construtor
-	public Promocao(String titulo, int porcentagemDeDesconto, LocalDate dataDeCriacao, LocalDateTime dataDeExpiracao, boolean ativa) {
+	public Promocao(String titulo, int porcentagemDeDesconto, int qtdMinimaDeDiarias, int qtdMinimaDeLocacoes, LocalDate dataDeCriacao, LocalDateTime dataDeExpiracao, boolean ativa) {
 		this.titulo = titulo;
 		this.porcentagemDeDesconto = porcentagemDeDesconto;
+		this.qtdMinimaDeDiarias = qtdMinimaDeDiarias;
+		this.qtdMinimaDeLocacoes = qtdMinimaDeLocacoes;
 		this.dataDeCriacao = dataDeCriacao;
 		this.dataDeExpiracao = dataDeExpiracao;
 		this.ativa = ativa;
@@ -46,6 +50,22 @@ public class Promocao {
 
 	public void setPorcentagemDeDesconto(int porcentagemDeDesconto) {
 		this.porcentagemDeDesconto = porcentagemDeDesconto;
+	}
+
+	public int getQtdMinimaDeDiarias() {
+		return qtdMinimaDeDiarias;
+	}
+
+	public void setQtdMinimaDeDiarias(int qtdMinimaDeDiarias) {
+		this.qtdMinimaDeDiarias = qtdMinimaDeDiarias;
+	}
+
+	public int getQtdMinimaDeLocacoes() {
+		return qtdMinimaDeLocacoes;
+	}
+
+	public void setQtdMinimaDeLocacoes(int qtdMinimaDeLocacoes) {
+		this.qtdMinimaDeLocacoes = qtdMinimaDeLocacoes;
 	}
 
 	public LocalDate getDataDeCriacao() {
