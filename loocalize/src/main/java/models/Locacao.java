@@ -17,10 +17,9 @@ public class Locacao {
 	private boolean carroDevolvido;
 	
 	//Construtor
-	public Locacao(Veiculo veiculo, Cliente cliente, Promocao promocao, LocalDateTime dataHoraDaLocacao, int qtdDeDiarias, boolean carroDevolvido) {
+	public Locacao(Veiculo veiculo, Cliente cliente, LocalDateTime dataHoraDaLocacao, int qtdDeDiarias, boolean carroDevolvido) {
 		this.veiculo = veiculo;
 		this.cliente = cliente;
-		this.promocao = promocao;
 		this.dataHoraDaLocacao = dataHoraDaLocacao;
 		this.qtdDeDiarias = qtdDeDiarias;
 		this.gerarValorDaLocacao();
