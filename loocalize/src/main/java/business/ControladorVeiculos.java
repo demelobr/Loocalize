@@ -17,8 +17,8 @@ public class ControladorVeiculos implements IControladorVeiculos{
         this.repositorioVeiculos = RepositorioVeiculos.getInstance();
     }
 
-    private ControladorVeiculos getInstance(){
-        if (instance == null){
+    public static ControladorVeiculos getInstance(){
+        if(instance == null){
             instance = new ControladorVeiculos();
         }
         return instance;
