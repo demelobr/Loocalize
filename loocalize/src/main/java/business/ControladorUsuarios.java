@@ -8,10 +8,14 @@ import models.Usuario;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ControladorUsuarios implements IControladorUsuarios{
     private static ControladorUsuarios instance;
     private IRepositorioUsuarios repUsuarios;
+    private static final String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+    private static final Pattern pattern = Pattern.compile(emailRegex);
 
     public ControladorUsuarios(){
         this.repUsuarios = RepositorioUsuarios.getInstance();
@@ -196,6 +200,12 @@ public class ControladorUsuarios implements IControladorUsuarios{
     @Override
     public Usuario buscarUsuario(String usuario) {
         return repUsuarios.buscarUsuario(usuario);
+    }
+
+    @Override
+    public boolean emailValido(String email) {
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 
     @Override

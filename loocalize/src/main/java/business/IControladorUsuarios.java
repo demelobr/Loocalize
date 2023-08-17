@@ -27,6 +27,8 @@ public interface IControladorUsuarios {
 
     Usuario buscarUsuario(String usuario);
 
+    boolean emailValido(String email);
+
     String gerarId();
 
 }
