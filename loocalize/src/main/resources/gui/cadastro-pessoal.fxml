@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CadastroClientePessoalController">
    <top>
       <HBox alignment="CENTER" maxHeight="65.0" minHeight="65.0" prefHeight="65.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" maxHeight="45.0" maxWidth="400.0" minHeight="45.0" minWidth="400.0" prefHeight="45.0" prefWidth="400.0" stylesheets="@style/style.css">
+            <HBox fx:id="hbPushMsgCadastroPessoal" alignment="CENTER" maxHeight="45.0" maxWidth="400.0" minHeight="45.0" minWidth="400.0" prefHeight="45.0" prefWidth="400.0" stylesheets="@style/style.css">
                <styleClass>
                   <String fx:value="push-msg-error" />
                   <String fx:value="shadow" />
@@ -34,7 +34,7 @@
                      </font>
                   </Label>
                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                  <HBox fx:id="btnFecharCadastroPessoal" alignment="CENTER" maxHeight="28.0" maxWidth="28.0" minHeight="28.0" minWidth="28.0" prefHeight="28.0" prefWidth="28.0" styleClass="btn-fechar" stylesheets="@style/style.css">
+                  <HBox fx:id="btnFecharCadastroPessoal" alignment="CENTER" maxHeight="28.0" maxWidth="28.0" minHeight="28.0" minWidth="28.0" onMouseClicked="#fecharPushMsg" prefHeight="28.0" prefWidth="28.0" styleClass="btn-fechar" stylesheets="@style/style.css">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -65,9 +65,15 @@
          <children>
             <VBox prefHeight="485.0" prefWidth="947.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="900.0">
+                  <HBox alignment="CENTER_LEFT" maxHeight="20.0" minHeight="20.0" prefHeight="20.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
                      <children>
-                        <Label fx:id="btnVoltarCadastroPessoal" text="Voltar">
+                        <Label fx:id="btnVoltarCadastroConta" onMouseClicked="#trocarTelaCadastroConta" text="Voltar">
                            <font>
                               <Font name="Inter Bold" size="14.0" />
                            </font>
@@ -76,12 +82,6 @@
                            </cursor>
                         </Label>
                      </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <VBox.margin>
-                        <Insets bottom="30.0" />
-                     </VBox.margin>
                   </HBox>
                   <Pane prefHeight="0.0" VBox.vgrow="ALWAYS" />
                   <HBox prefHeight="425.0" prefWidth="900.0">
