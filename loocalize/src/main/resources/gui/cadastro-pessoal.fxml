@@ -200,7 +200,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="thCnhCadastroPessoal" maxHeight="40.0" maxWidth="250.0" minHeight="40.0" minWidth="250.0" prefHeight="40.0" prefWidth="250.0" promptText="CHN" styleClass="input-box" stylesheets="@style/style.css">
+                                    <TextField fx:id="tfCnhCadastroPessoal" maxHeight="40.0" maxWidth="250.0" minHeight="40.0" minWidth="250.0" prefHeight="40.0" prefWidth="250.0" promptText="CHN" styleClass="input-box" stylesheets="@style/style.css">
                                        <font>
                                           <Font name="Inter Bold" size="14.0" />
                                        </font>
@@ -227,7 +227,7 @@
                   <Pane prefHeight="0.0" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER" maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
                      <children>
-                        <Button fx:id="btnCadastrarCadastroPessoal" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Cadastrar">
+                        <Button fx:id="btnCadastrarCadastroPessoal" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#trocarTelaLogin" prefHeight="40.0" prefWidth="200.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Cadastrar">
                            <font>
                               <Font name="Inter Bold" size="14.0" />
                            </font>

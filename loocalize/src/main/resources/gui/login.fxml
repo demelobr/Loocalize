@@ -125,7 +125,7 @@
                   <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                   <HBox fx:id="btnFecharLogin" alignment="CENTER" maxHeight="28.0" maxWidth="28.0" minHeight="28.0" minWidth="28.0" onMouseClicked="#fecharPushMsg" prefHeight="28.0" prefWidth="28.0" styleClass="btn-fechar" stylesheets="@style/style.css">
                      <children>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgFecharLogin" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/cil-x.png" />
                            </image>
