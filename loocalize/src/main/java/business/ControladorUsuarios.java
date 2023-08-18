@@ -10,6 +10,7 @@ import models.Usuario;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -223,26 +224,31 @@ public class ControladorUsuarios implements IControladorUsuarios{
 
     public void checarDadosPessoais(String nome, LocalDate dataDeNascimento, String telefone, String endereco, String cpf, String cnh, LocalDate dataDeHabilitacao) throws CpfInvalidoException, TelefoneInvalidoException, DataDeHabilitacaoInvalidaException, DataDeNascimentoInvalidaException, AnosDeHabilitacaoInsuficientesException, UsuarioExisteException, CampoVazioException, UsuarioNuloException, UsuarioMenorDeIdadeException {
         if(dataDeNascimento.isBefore(LocalDate.now())){
-            if(this.telefoneValido(telefone)){
-                if(this.cpfValido(cpf)){
-                    if(dataDeHabilitacao.isBefore(LocalDate.now())){
-                        CadastroClientePessoalController ccpc = CadastroClientePessoalController.getInstance();
-                        ccpc.getNovoCliente().setNome(nome);
-                        ccpc.getNovoCliente().setDataNascimento(dataDeNascimento);
-                        ccpc.getNovoCliente().setTelefone(telefone);
-                        ccpc.getNovoCliente().setEndereco(endereco);
-                        ccpc.getNovoCliente().setCpf(cpf);
-                        ccpc.getNovoCliente().setCnh(cnh);
-                        ccpc.getNovoCliente().setDataDeHabilitacao(dataDeHabilitacao);
-                        this.inserirUsuario(ccpc.getNovoCliente());
+            Period periodo = Period.between(dataDeNascimento, LocalDate.now());
+            if(periodo.getYears() >= 18){
+                if(this.telefoneValido(telefone)){
+                    if(this.cpfValido(cpf)){
+                        if(dataDeHabilitacao.isBefore(LocalDate.now())){
+                            CadastroClientePessoalController ccpc = CadastroClientePessoalController.getInstance();
+                            ccpc.getNovoCliente().setNome(nome);
+                            ccpc.getNovoCliente().setDataNascimento(dataDeNascimento);
+                            ccpc.getNovoCliente().setTelefone(telefone);
+                            ccpc.getNovoCliente().setEndereco(endereco);
+                            ccpc.getNovoCliente().setCpf(cpf);
+                            ccpc.getNovoCliente().setCnh(cnh);
+                            ccpc.getNovoCliente().setDataDeHabilitacao(dataDeHabilitacao);
+                            this.inserirUsuario(ccpc.getNovoCliente());
+                        }else{
+                            throw new DataDeHabilitacaoInvalidaException(dataDeHabilitacao);
+                        }
                     }else{
-                        throw new DataDeHabilitacaoInvalidaException(dataDeHabilitacao);
+                        throw new CpfInvalidoException(cpf);
                     }
                 }else{
-                    throw new CpfInvalidoException(cpf);
+                    throw new TelefoneInvalidoException(telefone);
                 }
             }else{
-                throw new TelefoneInvalidoException(telefone);
+                throw new UsuarioMenorDeIdadeException();
             }
         }else{
             throw new DataDeNascimentoInvalidaException(dataDeNascimento);
