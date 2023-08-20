@@ -16,6 +16,11 @@ public class Cliente extends Usuario{
     private int qtdDeLocacoes;
     private ArrayList<Locacao> locacoes;
 
+    public  Cliente(String usuario, String senha, String email){
+        super(usuario, senha, email);
+        this.locacoes = new ArrayList<>();
+    }
+
     public Cliente(String usuario, String senha, String email, String nome, String cpf, LocalDate dataNascimento, String telefone, String endereco, String cnh, LocalDate dataDeHabilitacao, int qtdDeLocacoes){
         super(usuario, senha, email);
         this.nome = nome;

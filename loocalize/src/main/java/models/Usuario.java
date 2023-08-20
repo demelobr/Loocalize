@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Random;
-
 public abstract class Usuario {
 
 		//Atributos
