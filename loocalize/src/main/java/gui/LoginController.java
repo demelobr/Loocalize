@@ -1,22 +1,25 @@
 package gui;
 
+import exception.LoginIncorretoException;
+import exception.UsuarioLogadoComSucessoException;
+import exception.UsuarioNaoExisteException;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class loginController {
+public class LoginController {
+    private Application app;
+
     @FXML
     private Button btnEntrarLogin;
 
@@ -25,6 +28,9 @@ public class loginController {
 
     @FXML
     private HBox hbPushMsgLogin;
+
+    @FXML
+    private ImageView imgFecharLogin;
 
     @FXML
     private Label lbCadastraseLogin;
@@ -38,32 +44,72 @@ public class loginController {
     @FXML
     private TextField tfUsuarioLogin;
 
-    // Atributos para troca de cena
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    public LoginController(){
+        this.app = new Application();
+    }
 
     @FXML
     public void initialize(){
         hbPushMsgLogin.setVisible(false);
     }
-
     @FXML
-    public void trocarTelaPrincipal(ActionEvent event) throws IOException{
-        String usuario = tfUsuarioLogin.getText();
-        String senha = pfSenhaLogin.getText();
-
-        System.out.println(usuario);
-        System.out.println(senha);
+    public void fecharPushMsg(MouseEvent event){
+        hbPushMsgLogin.setVisible(false);
     }
 
     @FXML
-    public void trocarTelaCadastro(MouseEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("cadastro-pessoal.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void trocarTelaPrincipal(ActionEvent event) throws IOException {
+        String usuario = tfUsuarioLogin.getText();
+        String senha = pfSenhaLogin.getText();
+
+        if(usuario.isEmpty() || senha.isEmpty()){
+            lbPushMsgLogin.setText("Preencha todos os campos!");
+            hbPushMsgLogin.getStyleClass().setAll("push-msg-error");
+            hbPushMsgLogin.setVisible(true);
+        }else{
+            try {
+                app.getServer().checarLogin(usuario, senha);
+            } catch (IOException e) {
+                lbPushMsgLogin.setText("Erro ao buscar usuário...");
+                hbPushMsgLogin.getStyleClass().setAll("push-msg-error");
+                hbPushMsgLogin.setVisible(true);
+            } catch (UsuarioNaoExisteException e) {
+                lbPushMsgLogin.setText(e.getMessage());
+                hbPushMsgLogin.getStyleClass().setAll("push-msg-error");
+                hbPushMsgLogin.setVisible(true);
+            } catch (LoginIncorretoException e) {
+                lbPushMsgLogin.setText(e.getMessage());
+                hbPushMsgLogin.getStyleClass().setAll("push-msg-error");
+                hbPushMsgLogin.setVisible(true);
+            } catch (UsuarioLogadoComSucessoException e) {
+                lbPushMsgLogin.setText(e.getMessage());
+                hbPushMsgLogin.getStyleClass().setAll("push-msg-success");
+                hbPushMsgLogin.setVisible(true);
+
+                new Thread(() -> {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException ev) {
+                        ev.printStackTrace();
+                    }
+                    Platform.runLater(() -> {
+                        System.out.println(e.getFxml());
+//                        try {
+//                            app.changeScene(e.getFxml(), e.getTitle());
+//                        } catch (IOException ex) {
+//                            throw new RuntimeException(ex);
+//                        }
+                    });
+                }).start();
+
+            }
+        }
+    }
+
+    @FXML
+    public void trocarTelaCadastroConta(MouseEvent event) throws IOException{
+        ScreenManager sm = ScreenManager.getInstance();
+        sm.changeScene("cadastro-conta.fxml", "Loocalize - Cadastro");
     }
 
 }
