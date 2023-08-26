@@ -1,13 +1,10 @@
 package gui;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class ScreenManager {
     private static ScreenManager instance;
@@ -19,6 +16,9 @@ public class ScreenManager {
     private Scene colaboradorAbaVeiculosScene;
     private Scene colaboradorCadastroVeiculoScene;
     private Scene colaboradorFichaVeiculoScene;
+    private Scene colaboradorAbaPromocoesScene;
+    private Scene colaboradorCadastroPromocaoScene;
+    private Scene colaboradorFichaPromocaoScene;
 
     private LoginController loginController;
     private CadastroClienteContaController cadastroClienteContaController;
@@ -26,6 +26,9 @@ public class ScreenManager {
     private ColaboradorAbaVeiculosController colaboradorAbaVeiculosController;
     private ColaboradorCadastroVeiculoController colaboradorCadastroVeiculoController;
     private ColaboradorFichaVeiculoController colaboradorFichaVeiculoController;
+    private ColaboradorAbaPromocoesController colaboradorAbaPromocoesController;
+    private ColaboradorCadastroPromocaoController colaboradorCadastroPromocaoController;
+    private ColaboradorFichaPromocaoController colaboradorFichaPromocaoController;
 
 
     public ScreenManager(){
@@ -74,6 +77,18 @@ public class ScreenManager {
         return colaboradorFichaVeiculoScene;
     }
 
+    public Scene getColaboradorAbaPromocoesScene() {
+        return colaboradorAbaPromocoesScene;
+    }
+
+    public Scene getColaboradorCadastroPromocaoScene() {
+        return colaboradorCadastroPromocaoScene;
+    }
+
+    public Scene getColaboradorFichaPromocaoScene() {
+        return colaboradorFichaPromocaoScene;
+    }
+
     public CadastroClienteContaController getCadastroClienteContaController() {
         return cadastroClienteContaController;
     }
@@ -92,6 +107,18 @@ public class ScreenManager {
 
     public ColaboradorFichaVeiculoController getColaboradorFichaVeiculoController() {
         return colaboradorFichaVeiculoController;
+    }
+
+    public ColaboradorAbaPromocoesController getColaboradorAbaPromocoesController() {
+        return colaboradorAbaPromocoesController;
+    }
+
+    public ColaboradorCadastroPromocaoController getColaboradorCadastroPromocaoController() {
+        return colaboradorCadastroPromocaoController;
+    }
+
+    public ColaboradorFichaPromocaoController getColaboradorFichaPromocaoController() {
+        return colaboradorFichaPromocaoController;
     }
 
     private void carregarTelas(){
@@ -121,6 +148,18 @@ public class ScreenManager {
             this.colaboradorFichaVeiculoScene = new Scene(colaboradorFichaVeiculoPane.load());
             this.colaboradorFichaVeiculoController = colaboradorFichaVeiculoPane.getController();
 
+            FXMLLoader colaboradorAbaPromocoesPane = new FXMLLoader(getClass().getResource("colaborador-aba-promocoes.fxml"));
+            this.colaboradorAbaPromocoesScene = new Scene(colaboradorAbaPromocoesPane.load());
+            this.colaboradorAbaPromocoesController = colaboradorAbaPromocoesPane.getController();
+
+            FXMLLoader colaboradorCadastroPromocaoPane = new FXMLLoader(getClass().getResource("colaborador-cadastro-promocao.fxml"));
+            this.colaboradorCadastroPromocaoScene = new Scene(colaboradorCadastroPromocaoPane.load());
+            this.colaboradorCadastroPromocaoController = colaboradorCadastroPromocaoPane.getController();
+
+            FXMLLoader colaboradorFichaPromocaoPane = new FXMLLoader(getClass().getResource("colaborador-ficha-promocao.fxml"));
+            this.colaboradorFichaPromocaoScene = new Scene(colaboradorFichaPromocaoPane.load());
+            this.colaboradorFichaPromocaoController = colaboradorFichaPromocaoPane.getController();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -134,6 +173,9 @@ public class ScreenManager {
             case "colaborador-aba-veiculos.fxml" -> stg.setScene(colaboradorAbaVeiculosScene);
             case "colaborador-cadastro-veiculo.fxml" -> stg.setScene(colaboradorCadastroVeiculoScene);
             case "colaborador-ficha-veiculo.fxml" -> stg.setScene(colaboradorFichaVeiculoScene);
+            case "colaborador-aba-promocoes.fxml" -> stg.setScene(colaboradorAbaPromocoesScene);
+            case "colaborador-cadastro-promocao.fxml" -> stg.setScene(colaboradorCadastroPromocaoScene);
+            case "colaborador-ficha-promocao.fxml" -> stg.setScene(colaboradorFichaPromocaoScene);
         }
 
         stg.setTitle(title);
