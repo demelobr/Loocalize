@@ -2,6 +2,7 @@ package business;
 
 import data.IRepositorioVeiculos;
 import data.RepositorioVeiculos;
+import exception.*;
 import models.Veiculo;
 
 import java.time.Year;
@@ -27,26 +28,31 @@ public class ControladorVeiculos implements IControladorVeiculos{
     //Métodos
     //Cadastrar Veículos
     @Override
-    public void inserirVeiculo(Veiculo veiculo){
-        if (veiculo.getModelo().isEmpty() || veiculo.getMarca().isEmpty() || veiculo.getId().isEmpty() || veiculo.getAno() == null || veiculo.getFotoDoVeiculo().isEmpty()) {
-            //throw new IllegalArgumentException("Todos os campos obrigatórios devem ser preenchidos.");
+    public void inserirVeiculo(Veiculo veiculo) throws CampoVazioException, QuilometragemInvalidaException, ValorDaDiariaInvalidaException, VeiculoExisteException, VeiculoInseridoComSucessoException {
+        if (veiculo.getModelo().isEmpty() || veiculo.getMarca().isEmpty() || veiculo.getAno() == null || veiculo.getFotoDoVeiculo().isEmpty()) {
+            throw new CampoVazioException();
         }
-        if (veiculo.getQuilometragem() < 0 || veiculo.getValorDaDiaria() < 0) {
-            //throw new IllegalArgumentException("Valores negativos não são permitidos para quilometragem ou valor por km rodado.");
+        if (veiculo.getQuilometragem() < 0) {
+            throw new QuilometragemInvalidaException();
+        }
+        if(veiculo.getValorDaDiaria() < 0){
+            throw new ValorDaDiariaInvalidaException();
         }
         if (!repositorioVeiculos.verificarPlacaExistente(veiculo.getPlaca())){
             do{
                 veiculo.setId(repositorioVeiculos.gerarId());
             }while (repositorioVeiculos.existeVeiculo(veiculo.getId()));
+            System.out.println(veiculo);
             repositorioVeiculos.inserir(veiculo);
+            throw new VeiculoInseridoComSucessoException();
         } else {
-            //throw new IllegalArgumentException("Já existe um veículo com essa placa. Tente novamente...");
+            throw new VeiculoExisteException(veiculo.getId());
         }
     }
 
     //Atualiza veículo
     @Override
-    public void atualizarVeiculo(Veiculo veiculo, String novoModelo, String novaMarca, String novaPlaca, Year novoAno, int novaQuilometragem, int novaQtdDeLocacoes, double novoValorDaDiaria, String novaFotoDoVeiculo, boolean novoDisponivel){
+    public void atualizarVeiculo(Veiculo veiculo, String novoModelo, String novaMarca, String novaPlaca, Year novoAno, int novaQuilometragem, int novaQtdDeLocacoes, double novoValorDaDiaria, String novaFotoDoVeiculo, boolean novoDisponivel) throws VeiculoNaoExisteException, VeiculoEditadoComSucessoException {
         if (repositorioVeiculos.existeVeiculo(veiculo.getId())) {
             if (novoModelo.isEmpty() || veiculo.getModelo().equals(novoModelo)) {
                 novoModelo = veiculo.getModelo();
@@ -70,8 +76,9 @@ public class ControladorVeiculos implements IControladorVeiculos{
                 novoDisponivel = veiculo.isDisponivel();
             }
             repositorioVeiculos.atualizar(veiculo, novoModelo, novaMarca, novaPlaca, novoAno, novaQuilometragem, novaQtdDeLocacoes, novoValorDaDiaria, novaFotoDoVeiculo, novoDisponivel);
+            throw new VeiculoEditadoComSucessoException();
         }else{
-            //Levantar exceção de que o veiculo não existe
+            throw new VeiculoNaoExisteException(veiculo.getPlaca());
         }
     }
 

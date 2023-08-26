@@ -1,5 +1,6 @@
 package business;
 
+import exception.*;
 import models.Veiculo;
 
 import java.time.Year;
@@ -9,10 +10,10 @@ public interface IControladorVeiculos{
 
     //Métodos
     //Cadastra Veículos
-    void inserirVeiculo(Veiculo veiculo);
+    void inserirVeiculo(Veiculo veiculo) throws CampoVazioException, QuilometragemInvalidaException, ValorDaDiariaInvalidaException, VeiculoExisteException, VeiculoInseridoComSucessoException;
 
     //Atualiza veículo
-    void atualizarVeiculo(Veiculo veiculo, String novoModelo, String novaMarca, String novaPlaca, Year novoAno, int novaQuilometragem, int novaQtdDeLocacoes, double novoValorPorKmRodado, String novaFotoDoVeiculo, boolean novoDisponivel);
+    void atualizarVeiculo(Veiculo veiculo, String novoModelo, String novaMarca, String novaPlaca, Year novoAno, int novaQuilometragem, int novaQtdDeLocacoes, double novoValorDaDiaria, String novaFotoDoVeiculo, boolean novoDisponivel) throws VeiculoNaoExisteException, VeiculoEditadoComSucessoException;
 
     //Exclui veículo
     void deletarVeiculo(Veiculo veiculo);

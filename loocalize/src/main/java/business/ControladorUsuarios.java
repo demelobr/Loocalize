@@ -193,7 +193,7 @@ public class ControladorUsuarios implements IControladorUsuarios{
                 if(user instanceof Colaborador && ((Colaborador) user).isAdm()){
                     throw new UsuarioLogadoComSucessoException("telaPrincipalColaboradorAdm.fmxl", "Loocalize - Colaborador Adm");
                 }else if(user instanceof Colaborador && !((Colaborador) user).isAdm()){
-                    throw new UsuarioLogadoComSucessoException("telaPrincipalColaborador.fmxl", "Loocalize - Colaborador");
+                    throw new UsuarioLogadoComSucessoException("colaborador-aba-veiculos.fxml", "Loocalize - Colaborador");
                 }else{
                     throw new UsuarioLogadoComSucessoException("telaPrincipalCliente.fmxl", "Loocalize - Home");
                 }
