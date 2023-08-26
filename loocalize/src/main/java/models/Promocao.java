@@ -1,9 +1,7 @@
 package models;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Random;
 
 public class Promocao {
 
@@ -14,11 +12,11 @@ public class Promocao {
 	private int qtdMinimaDeDiarias;
 	private int qtdMinimaDeLocacoes;
 	private LocalDate dataDeCriacao;
-	private LocalDateTime dataDeExpiracao;
+	private LocalDate dataDeExpiracao;
 	private boolean ativa;
 
 	//Construtor
-	public Promocao(String titulo, int porcentagemDeDesconto, int qtdMinimaDeDiarias, int qtdMinimaDeLocacoes, LocalDate dataDeCriacao, LocalDateTime dataDeExpiracao, boolean ativa) {
+	public Promocao(String titulo, int porcentagemDeDesconto, int qtdMinimaDeDiarias, int qtdMinimaDeLocacoes, LocalDate dataDeCriacao, LocalDate dataDeExpiracao, boolean ativa) {
 		this.titulo = titulo;
 		this.porcentagemDeDesconto = porcentagemDeDesconto;
 		this.qtdMinimaDeDiarias = qtdMinimaDeDiarias;
@@ -76,11 +74,11 @@ public class Promocao {
 		this.dataDeCriacao = dataDeCriacao;
 	}
 
-	public LocalDateTime getDataDeExpiracao() {
+	public LocalDate getDataDeExpiracao() {
 		return dataDeExpiracao;
 	}
 
-	public void setDataDeExpiracao(LocalDateTime dataDeExpiracao) {
+	public void setDataDeExpiracao(LocalDate dataDeExpiracao) {
 		this.dataDeExpiracao = dataDeExpiracao;
 	}
 
@@ -95,8 +93,7 @@ public class Promocao {
 	@Override
 	public String toString() {
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
-		return String.format("<Promoção>\nID: %s\nTítulo: %s\nData de criação: %s\nData de expiração: %s\nPorcentagem de desconto: %d\nAtiva: %s", id, titulo, dataDeCriacao.format(formatoData), dataDeExpiracao.format(formatoDataHora), porcentagemDeDesconto, ativa);
+		return String.format("<Promoção>\nID: %s\nTítulo: %s\nData de criação: %s\nData de expiração: %s\nPorcentagem de desconto: %d\nAtiva: %s", id, titulo, dataDeCriacao.format(formatoData), dataDeExpiracao.format(formatoData), porcentagemDeDesconto, ativa);
 	}
 
 }
