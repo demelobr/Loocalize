@@ -93,7 +93,7 @@ public class LoginController {
                         ev.printStackTrace();
                     }
                     Platform.runLater(() -> {
-                        System.out.println(e.getFxml());
+                        this.resetarTela();
                         ScreenManager sm = ScreenManager.getInstance();
                         sm.changeScene(e.getFxml(), e.getTitle());
                     });
@@ -104,9 +104,16 @@ public class LoginController {
     }
 
     @FXML
-    public void trocarTelaCadastroConta(MouseEvent event) throws IOException{
+    public void trocarTelaCadastroConta(MouseEvent event){
+        this.resetarTela();
         ScreenManager sm = ScreenManager.getInstance();
         sm.changeScene("cadastro-conta.fxml", "Loocalize - Cadastro");
+    }
+
+    public void resetarTela(){
+        hbPushMsgLogin.setVisible(false);
+        tfUsuarioLogin.setText("");
+        pfSenhaLogin.setText("");
     }
 
 }

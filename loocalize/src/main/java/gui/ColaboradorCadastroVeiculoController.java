@@ -87,7 +87,7 @@ public class ColaboradorCadastroVeiculoController {
         String foto = lbCaminhoImgCadastroVeiculo.getText();
         Veiculo novoVeiculo = null;
 
-        if(!modelo.isEmpty() || !marca.isEmpty() || !placa.isEmpty() || !ano.isEmpty() || !quilometragem.isEmpty() || !qtdDeLocacao.isEmpty() || !valorDaDiaria.isEmpty() || !foto.isEmpty()){
+        if(!modelo.isEmpty() && !marca.isEmpty() && !placa.isEmpty() && !ano.isEmpty() && !quilometragem.isEmpty() && !qtdDeLocacao.isEmpty() && !valorDaDiaria.isEmpty() && !foto.isEmpty()){
             if(Year.of(Integer.parseInt(ano)) != null && Integer.parseInt(quilometragem) >= 0 && Integer.parseInt(qtdDeLocacao) >= 0 && Double.parseDouble(valorDaDiaria) >= 0){
                 try {
                     novoVeiculo = new Veiculo(modelo, marca, placa, Year.of(Integer.parseInt(ano)), Integer.parseInt(quilometragem), Integer.parseInt(qtdDeLocacao), Double.parseDouble(valorDaDiaria), foto, true);
@@ -121,6 +121,7 @@ public class ColaboradorCadastroVeiculoController {
                             ev.printStackTrace();
                         }
                         Platform.runLater(() -> {
+                            this.resetarTela();
                             ScreenManager sm = ScreenManager.getInstance();
                             sm.getColaboradorAbaVeiculosController().atualizaVeiculosDaTabela();
                             sm.changeScene("colaborador-aba-veiculos.fxml", "Loocalize - Colaborador");
@@ -156,8 +157,21 @@ public class ColaboradorCadastroVeiculoController {
 
     @FXML
     public void trocarColaboradorAbaVeiculos(){
+        this.resetarTela();
         ScreenManager sm = ScreenManager.getInstance();
         sm.changeScene("colaborador-aba-veiculos.fxml", "Loocalize - Colaborador");
+    }
+
+    public void resetarTela(){
+        hbPushMsgCadastroVeiculo.setVisible(false);
+        tfModeloCadastroVeiculo.setText("");
+        tfMarcaCadastroVeiculo.setText("");
+        tfPlacaCadastroVeiculo.setText("");
+        tfAnoCadastroVeiculo.setText("");
+        tfKmCadastroVeiculo.setText("");
+        tfLocacaoCadastroVeiculo.setText("");
+        tfDiariaCadastroVeiculo.setText("");
+        lbCaminhoImgCadastroVeiculo.setText("");
     }
 
 }

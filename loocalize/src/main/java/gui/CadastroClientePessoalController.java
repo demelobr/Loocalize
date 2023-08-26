@@ -1,6 +1,5 @@
 package gui;
 
-import business.ControladorUsuarios;
 import exception.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -108,6 +107,7 @@ public class CadastroClientePessoalController {
         }else{
             try {
                 app.getServer().checarDadosPessoais(nome, dataDeNascimento, telefone, endereco, cpf, cnh, dataDeHabilitacao);
+                this.resetarTela();
                 ScreenManager sm = ScreenManager.getInstance();
                 sm.changeScene("login.fxml", "Loocalize - Login");
             } catch (TelefoneInvalidoException e) {
@@ -148,6 +148,17 @@ public class CadastroClientePessoalController {
                 hbPushMsgCadastroPessoal.setVisible(true);
             }
         }
+    }
+
+    public void resetarTela(){
+        hbPushMsgCadastroPessoal.setVisible(false);
+        tfNomeCadastroPessoal.setText("");
+        dpDataDeNascimentoCadastroPessoal.setValue(LocalDate.now());
+        tfTelefoneCadastroPessoal.setText("");
+        tfEnderecoCadastroPessoal.setText("");
+        tfCpfCadastroPessoal.setText("");
+        tfCnhCadastroPessoal.setText("");
+        dpDataDeHabilitacaoCadastroPessoal.setValue(LocalDate.now());
     }
 
 }

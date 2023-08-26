@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Rectangle;
 import models.Veiculo;
 
 import java.net.URL;
@@ -122,7 +123,11 @@ public class ColaboradorAbaVeiculosController implements Initializable {
     public void detalharVeiculo(ActionEvent event){
         Veiculo veiculoSelecionado = tvVeiculosAbaVeiculos.getSelectionModel().getSelectedItem();
         if(veiculoSelecionado != null){
-            imgCarroAbaVeiculos.setImage(new Image("file:"+veiculoSelecionado.getFotoDoVeiculo()));
+            imgCarroAbaVeiculos.setImage(new Image("file:" + veiculoSelecionado.getFotoDoVeiculo()));
+            Rectangle clip = new Rectangle(imgCarroAbaVeiculos.getFitWidth(), imgCarroAbaVeiculos.getFitHeight());
+            clip.setArcWidth(10);
+            clip.setArcHeight(10);
+            imgCarroAbaVeiculos.setClip(clip);
             lbModeloAbaVeiculos.setText(veiculoSelecionado.getModelo());
             lbPlacaAbaVeiculos.setText(veiculoSelecionado.getPlaca());
             lbIdAbaVeiculos.setText(veiculoSelecionado.getId());
@@ -130,7 +135,7 @@ public class ColaboradorAbaVeiculosController implements Initializable {
             lbAnoAbaVeiculos.setText(veiculoSelecionado.getAno().toString());
             lbKmAbaVeiculos.setText(Integer.toString(veiculoSelecionado.getQuilometragem()));
             lbLocacoesAbaVeiculos.setText(Integer.toString(veiculoSelecionado.getQtdDeLocacao()));
-            lbDiariaAbaVeiculos.setText(Double.toString(veiculoSelecionado.getValorDaDiaria()));
+            lbDiariaAbaVeiculos.setText("R$ " + String.format("%.2f", veiculoSelecionado.getValorDaDiaria()));
         }else{
             lbPushMsgAbaVeiculos.setText("Selecione um veículo!");
             hbPushMsgAbaVeiculos.getStyleClass().setAll("push-msg-error");
@@ -165,6 +170,12 @@ public class ColaboradorAbaVeiculosController implements Initializable {
             hbPushMsgAbaVeiculos.getStyleClass().setAll("push-msg-error");
             hbPushMsgAbaVeiculos.setVisible(true);
         }
+    }
+
+    @FXML
+    public void trocarAbaPromocoes(MouseEvent event) {
+        ScreenManager sm = ScreenManager.getInstance();
+        sm.changeScene("colaborador-aba-promocoes.fxml", "Loocalize - Promoções");
     }
 
     @FXML

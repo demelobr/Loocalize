@@ -93,9 +93,18 @@ public class CadastroClienteContaController {
     }
 
     @FXML
-    public void trocarTelaLogin(MouseEvent event) throws IOException {
+    public void trocarTelaLogin(MouseEvent event){
+        this.resetarTela();
         ScreenManager sm = ScreenManager.getInstance();
         sm.changeScene("login.fxml", "Loocalize - Login");
+    }
+
+    public void resetarTela(){
+        hbPushMsgCadastroConta.setVisible(false);
+        tfUsuarioCadastroConta.setText("");
+        tfEmailCadastroConta.setText("");
+        pfSenhaCadastroConta.setText("");
+        pfRepetirSenhaCadastroConta.setText("");
     }
 
 }

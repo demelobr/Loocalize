@@ -101,11 +101,12 @@ public class ColaboradorFichaVeiculoController {
         String foto = lbCaminhoImgEditarVeiculo.getText();
         boolean disponivel = cbDisponivelEditarVeiculo.isSelected();
 
+        if(ano.isEmpty()) ano = veiculoEditado.getAno().toString();
+        if(quilometragem.isEmpty()) quilometragem = Integer.toString(veiculoEditado.getQuilometragem());
+        if(qtdDeLocacao.isEmpty()) qtdDeLocacao = Integer.toString(veiculoEditado.getQtdDeLocacao());
+        if(valorDaDiaria.isEmpty()) valorDaDiaria = Double.toString(veiculoEditado.getValorDaDiaria());
+
         try {
-            if(ano.isEmpty()) ano = veiculoEditado.getAno().toString();
-            if(quilometragem.isEmpty()) quilometragem = Integer.toString(veiculoEditado.getQuilometragem());
-            if(qtdDeLocacao.isEmpty()) qtdDeLocacao = Integer.toString(veiculoEditado.getQtdDeLocacao());
-            if(valorDaDiaria.isEmpty()) valorDaDiaria = Double.toString(veiculoEditado.getValorDaDiaria());
             app.getServer().editarVeiculo(veiculoEditado, modelo, marca, placa, Year.of(Integer.parseInt(ano)), Integer.parseInt(quilometragem), Integer.parseInt(qtdDeLocacao), Double.parseDouble(valorDaDiaria), foto, disponivel);
         } catch (VeiculoNaoExisteException e) {
             lbPushMsgEditarVeiculo.setText(e.getMessage());
@@ -123,6 +124,7 @@ public class ColaboradorFichaVeiculoController {
                     ev.printStackTrace();
                 }
                 Platform.runLater(() -> {
+                    this.resetarTela();
                     ScreenManager sm = ScreenManager.getInstance();
                     sm.getColaboradorAbaVeiculosController().atualizaVeiculosDaTabela();
                     sm.changeScene("colaborador-aba-veiculos.fxml", "Loocalize - Colaborador");
@@ -147,6 +149,7 @@ public class ColaboradorFichaVeiculoController {
 
     @FXML
     public void trocarColaboradorAbaVeiculos(){
+        this.resetarTela();
         ScreenManager sm = ScreenManager.getInstance();
         sm.changeScene("colaborador-aba-veiculos.fxml", "Loocalize - Colaborador");
     }
@@ -161,6 +164,19 @@ public class ColaboradorFichaVeiculoController {
         tfDiariaEditarVeiculo.setPromptText(Double.toString(veiculoEditado.getValorDaDiaria()));
         lbCaminhoImgEditarVeiculo.setText(veiculoEditado.getFotoDoVeiculo());
         cbDisponivelEditarVeiculo.setSelected(veiculoEditado.isDisponivel());
+    }
+
+    public void resetarTela(){
+        hbPushMsgEditarVeiculo.setVisible(false);
+        tfModeloEditarVeiculo.setText("");
+        tfMarcaEditarVeiculo.setText("");
+        tfPlacaEditarVeiculo.setText("");
+        tfAnoEditarVeiculo.setText("");
+        tfKmEditarVeiculo.setText("");
+        tfLocacaoEditarVeiculo.setText("");
+        tfDiariaEditarVeiculo.setText("");
+        lbCaminhoImgEditarVeiculo.setText("");
+        cbDisponivelEditarVeiculo.setSelected(false);
     }
 
 }
