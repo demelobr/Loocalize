@@ -94,11 +94,8 @@ public class LoginController {
                     }
                     Platform.runLater(() -> {
                         System.out.println(e.getFxml());
-//                        try {
-//                            app.changeScene(e.getFxml(), e.getTitle());
-//                        } catch (IOException ex) {
-//                            throw new RuntimeException(ex);
-//                        }
+                        ScreenManager sm = ScreenManager.getInstance();
+                        sm.changeScene(e.getFxml(), e.getTitle());
                     });
                 }).start();
 
