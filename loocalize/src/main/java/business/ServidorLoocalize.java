@@ -3,9 +3,12 @@ package business;
 import exception.*;
 import models.Colaborador;
 import models.Usuario;
+import models.Veiculo;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.Year;
+import java.util.List;
 
 public class ServidorLoocalize {
     private static ServidorLoocalize instance;
@@ -31,7 +34,8 @@ public class ServidorLoocalize {
     public void criarAdm(){
         if(!controladorUsuarios.existeUsuario("admin")){
             try {
-                controladorUsuarios.inserirUsuario((Usuario) new Colaborador("demelobr", "12345", "demelobr@gmail.com", "Bruno Melo", "123.456.789-09", LocalDate.of(1997, 2, 24), "(81) 99999-9999", "Rua Fictícia", true));
+//                controladorUsuarios.inserirUsuario((Usuario) new Colaborador("demelobr", "12345", "demelobr@gmail.com", "Bruno Melo", "123.456.789-09", LocalDate.of(1997, 2, 24), "(81) 99999-9999", "Rua Fictícia", true));
+                controladorUsuarios.inserirUsuario((Usuario) new Colaborador("demelobr", "12345", "demelobr@gmail.com", "Bruno Melo", "123.456.789-09", LocalDate.of(1997, 2, 24), "(81) 99999-9999", "Rua Fictícia", false));
             } catch (UsuarioNuloException e) {
                 throw new RuntimeException(e);
             } catch (UsuarioExisteException e) {
@@ -58,6 +62,22 @@ public class ServidorLoocalize {
 
     public void checarDadosPessoais(String nome, LocalDate dataDeNascimento, String telefone, String endereco, String cpf, String cnh, LocalDate dataDeHabilitacao) throws TelefoneInvalidoException, DataDeHabilitacaoInvalidaException, CpfInvalidoException, DataDeNascimentoInvalidaException, AnosDeHabilitacaoInsuficientesException, UsuarioExisteException, CampoVazioException, UsuarioNuloException, UsuarioMenorDeIdadeException {
         controladorUsuarios.checarDadosPessoais(nome, dataDeNascimento, telefone, endereco, cpf, cnh, dataDeHabilitacao);
+    }
+
+    public void inserirVeiculo(Veiculo veiculo) throws VeiculoExisteException, CampoVazioException, ValorDaDiariaInvalidaException, QuilometragemInvalidaException, VeiculoInseridoComSucessoException {
+        controladorVeiculos.inserirVeiculo(veiculo);
+    }
+
+    public void editarVeiculo(Veiculo veiculo, String novoModelo, String novaMarca, String novaPlaca, Year novoAno, int novaQuilometragem, int novaQtdDeLocacoes, double novoValorDaDiaria, String novaFotoDoVeiculo, boolean novoDisponivel) throws VeiculoNaoExisteException, VeiculoEditadoComSucessoException {
+        controladorVeiculos.atualizarVeiculo(veiculo, novoModelo, novaMarca, novaPlaca, novoAno, novaQuilometragem, novaQtdDeLocacoes, novoValorDaDiaria, novaFotoDoVeiculo, novoDisponivel);
+    }
+
+    public void deletarVeiculo(Veiculo veiculo){
+        controladorVeiculos.deletarVeiculo(veiculo);
+    }
+
+    public List<Veiculo> listarTodosVeiculos(){
+        return controladorVeiculos.listarTodosVeiculos();
     }
 
 }
