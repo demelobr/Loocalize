@@ -2,6 +2,7 @@ package business;
 
 import exception.*;
 import models.Colaborador;
+import models.Promocao;
 import models.Usuario;
 import models.Veiculo;
 
@@ -78,6 +79,22 @@ public class ServidorLoocalize {
 
     public List<Veiculo> listarTodosVeiculos(){
         return controladorVeiculos.listarTodosVeiculos();
+    }
+
+    public void inserirPromocao(Promocao promocao) throws PromocaoNulaException, PromocaoExisteException, PromocaoInseridaComSucessoException {
+        controladorPromocoes.inserirPromocao(promocao);
+    }
+
+    public void editarPromocao(Promocao promocao, String titulo, int porcentagemDeDesconto, int qtdMinimaDeDiarias, int qtdMinimaDeLocacoes, LocalDate dataDeExpiracao, boolean ativa) throws PromocaoNulaException, PromocaoNaoExisteException, PromocaoEditadaComSucessoException {
+        controladorPromocoes.atualizarPromocao(promocao, titulo, porcentagemDeDesconto, qtdMinimaDeDiarias, qtdMinimaDeLocacoes, dataDeExpiracao, ativa);
+    }
+
+    public void deletarPromocao(Promocao promocao){
+        controladorPromocoes.deletarPromocao(promocao);
+    }
+
+    public List<Promocao> listarTodasPromocoes(){
+        return controladorPromocoes.listarTodasPromocoes();
     }
 
 }
