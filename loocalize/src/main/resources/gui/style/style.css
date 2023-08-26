@@ -6,6 +6,17 @@
 	-fx-background-color: #f8f8f8;
 }
 
+.campo-img{
+	-fx-background-color: #cbcbcb;
+	-fx-background-radius: 10;
+}
+
+.caixa-de-selecao{
+	-fx-background-color: #ffffff;
+	-fx-color: #1e1e1e;
+	-fx-background-radius: 10;
+}
+
 .transparent{
 	-fx-background-color: rgba(0,0,0,0);
 }
@@ -29,6 +40,16 @@
 .push-msg-success{
 	-fx-background-color: rgb(85, 255, 127);
 	-fx-color: #ffffff;
+	-fx-background-radius: 10;
+}
+
+.nav-bar{
+	-fx-background-color: #008dd8;
+	-fx-background-radius: 10;
+}
+
+.selecionador{
+	-fx-background-color: #f8f8f8;
 	-fx-background-radius: 10;
 }
 
@@ -57,4 +78,18 @@
 
 .btn-entrar:pressed{
 	-fx-background-color: #2710f2;
+}
+
+.btn-deletar{
+	-fx-background-color: rgb(255, 85, 128);
+	-fx-color: rgba(1,1,1,0.8);
+	-fx-background-radius: 10;
+}
+
+.btn-deletar:hover{
+	-fx-background-color: #CC4365;
+}
+
+.btn-deletar:pressed{
+	-fx-background-color: #FFA1B8;
 }
