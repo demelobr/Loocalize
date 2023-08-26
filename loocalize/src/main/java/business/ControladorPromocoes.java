@@ -2,7 +2,10 @@ package business;
 
 import data.IRepositorioPromocoes;
 import data.RepositorioPromocoes;
+import exception.*;
 import models.Promocao;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -26,27 +29,28 @@ public class ControladorPromocoes implements IControladorPromocoes {
     //end of singleton
 
 
-    public void inserirPromocao(Promocao promocao) {
+    public void inserirPromocao(Promocao promocao) throws PromocaoExisteException, PromocaoNulaException, PromocaoInseridaComSucessoException {
         if(promocao != null){
             if(!repPromocoes.existePromocao(promocao.getId())){
                 if (!promocao.getTitulo().isEmpty() && promocao.getPorcentagemDeDesconto() >= 0 &&
-                        promocao.getPorcentagemDeDesconto() <= 100 && promocao.getDataDeExpiracao().isAfter(LocalDateTime.now())){
+                        promocao.getPorcentagemDeDesconto() <= 100 && promocao.getDataDeExpiracao().isAfter(LocalDate.now())){
                     do{
                         promocao.setId(repPromocoes.gerarId());
                     }while (repPromocoes.existePromocao(promocao.getId()));
                     repPromocoes.inserir(promocao);
+                    throw new PromocaoInseridaComSucessoException();
                 }
 
             }else{
-                // Promoção já existe
+                throw new PromocaoExisteException(promocao.getId());
             }
         }else{
-            // Promoção nula
+            throw new PromocaoNulaException(promocao.getTitulo());
         }
 
     }
 
-    public void atualizarPromocao(Promocao promocao, String titulo, int porcentagemDeDesconto, int qtdMinimaDeDiarias, int qtdMinimaDeLocacoes, LocalDateTime dataDeExpiracao, boolean ativa) {
+    public void atualizarPromocao(Promocao promocao, String titulo, int porcentagemDeDesconto, int qtdMinimaDeDiarias, int qtdMinimaDeLocacoes, LocalDate dataDeExpiracao, boolean ativa) throws PromocaoNulaException, PromocaoNaoExisteException, PromocaoEditadaComSucessoException {
 
         if (promocao != null) {
             if (repPromocoes.existePromocao(promocao.getId())) {
@@ -60,7 +64,7 @@ public class ControladorPromocoes implements IControladorPromocoes {
 
                 }
 
-                if (dataDeExpiracao.isBefore(LocalDateTime.now())) {
+                if (dataDeExpiracao.isBefore(LocalDate.now())) {
                     dataDeExpiracao = promocao.getDataDeExpiracao();
                 }
                 if(qtdMinimaDeDiarias <= 0){
@@ -70,12 +74,13 @@ public class ControladorPromocoes implements IControladorPromocoes {
                     qtdMinimaDeLocacoes = promocao.getQtdMinimaDeLocacoes();
                 }
                 repPromocoes.atualizar(promocao, titulo, porcentagemDeDesconto, qtdMinimaDeDiarias, qtdMinimaDeLocacoes, dataDeExpiracao, ativa);
+                throw new PromocaoEditadaComSucessoException();
 
             }else{
-                //exeption promocao nao existe
+                throw new PromocaoNaoExisteException(promocao.getTitulo());
             }
         }else{
-            //exeption promocao nula
+            throw new PromocaoNulaException(promocao.getTitulo());
         }
     }
 
