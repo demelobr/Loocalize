@@ -1,7 +1,8 @@
 package data;
 
 import models.Promocao;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -28,7 +29,7 @@ public class RepositorioPromocoes implements IRepositorioPromocoes {
     }
 
     @Override
-    public void atualizar(Promocao promocao, String titulo, int porcentagemDeDesconto, int qtdMinimaDeDiarias, int qtdMinimaDeLocacoes, LocalDateTime dataDeExpiracao, boolean ativa) {
+    public void atualizar(Promocao promocao, String titulo, int porcentagemDeDesconto, int qtdMinimaDeDiarias, int qtdMinimaDeLocacoes, LocalDate dataDeExpiracao, boolean ativa) {
         promocao.setTitulo(titulo);
         promocao.setPorcentagemDeDesconto(porcentagemDeDesconto);
         promocao.setQtdMinimaDeDiarias(qtdMinimaDeDiarias);
