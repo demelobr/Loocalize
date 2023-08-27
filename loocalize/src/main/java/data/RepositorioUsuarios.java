@@ -68,11 +68,11 @@ public class RepositorioUsuarios implements IRepositorioUsuarios{
     }
 
     @Override
-    public List<Usuario> listarColaboradores() {
-        ArrayList<Usuario> listaDeColaboradores = new ArrayList<>();
+    public List<Colaborador> listarColaboradores() {
+        ArrayList<Colaborador> listaDeColaboradores = new ArrayList<>();
         for(Usuario usuario : usuarios){
             if(usuario instanceof Colaborador && !((Colaborador) usuario).isAdm()){
-                listaDeColaboradores.add(usuario);
+                listaDeColaboradores.add((Colaborador) usuario);
             }
         }
         return listaDeColaboradores;
@@ -90,11 +90,11 @@ public class RepositorioUsuarios implements IRepositorioUsuarios{
     }
 
     @Override
-    public List<Usuario> listarClientes() {
-        ArrayList<Usuario> listaDeClientes = new ArrayList<>();
+    public List<Cliente> listarClientes() {
+        ArrayList<Cliente> listaDeClientes = new ArrayList<>();
         for(Usuario usuario : usuarios){
             if(usuario instanceof Cliente){
-                listaDeClientes.add(usuario);
+                listaDeClientes.add((Cliente) usuario);
             }
         }
         return listaDeClientes;
