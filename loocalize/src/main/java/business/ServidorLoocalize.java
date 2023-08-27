@@ -1,10 +1,7 @@
 package business;
 
 import exception.*;
-import models.Colaborador;
-import models.Promocao;
-import models.Usuario;
-import models.Veiculo;
+import models.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -35,8 +32,8 @@ public class ServidorLoocalize {
     public void criarAdm(){
         if(!controladorUsuarios.existeUsuario("admin")){
             try {
-//                controladorUsuarios.inserirUsuario((Usuario) new Colaborador("demelobr", "12345", "demelobr@gmail.com", "Bruno Melo", "123.456.789-09", LocalDate.of(1997, 2, 24), "(81) 99999-9999", "Rua Fictícia", true));
-                controladorUsuarios.inserirUsuario((Usuario) new Colaborador("demelobr", "12345", "demelobr@gmail.com", "Bruno Melo", "123.456.789-09", LocalDate.of(1997, 2, 24), "(81) 99999-9999", "Rua Fictícia", false));
+                controladorUsuarios.inserirUsuario((Usuario) new Colaborador("demelobr", "12345", "demelobr@gmail.com", "Bruno Melo", "123.456.789-09", LocalDate.of(1997, 2, 24), "(81) 99999-9999", "Rua Fictícia", true));
+//                controladorUsuarios.inserirUsuario((Usuario) new Colaborador("demelobr", "12345", "demelobr@gmail.com", "Bruno Melo", "123.456.789-09", LocalDate.of(1997, 2, 24), "(81) 99999-9999", "Rua Fictícia", false));
             } catch (UsuarioNuloException e) {
                 throw new RuntimeException(e);
             } catch (UsuarioExisteException e) {
@@ -49,6 +46,8 @@ public class ServidorLoocalize {
                 throw new RuntimeException(e);
             } catch (AnosDeHabilitacaoInsuficientesException e) {
                 throw new RuntimeException(e);
+            } catch (UsuarioInseridoComSucessoException e) {
+//                throw new RuntimeException(e);
             }
         }
     }
@@ -61,8 +60,16 @@ public class ServidorLoocalize {
         controladorUsuarios.checarDadosDaNovaConta(usuario, email, senha, senhaRepetida);
     }
 
-    public void checarDadosPessoais(String nome, LocalDate dataDeNascimento, String telefone, String endereco, String cpf, String cnh, LocalDate dataDeHabilitacao) throws TelefoneInvalidoException, DataDeHabilitacaoInvalidaException, CpfInvalidoException, DataDeNascimentoInvalidaException, AnosDeHabilitacaoInsuficientesException, UsuarioExisteException, CampoVazioException, UsuarioNuloException, UsuarioMenorDeIdadeException {
+    public void checarDadosPessoais(String nome, LocalDate dataDeNascimento, String telefone, String endereco, String cpf, String cnh, LocalDate dataDeHabilitacao) throws TelefoneInvalidoException, DataDeHabilitacaoInvalidaException, CpfInvalidoException, DataDeNascimentoInvalidaException, AnosDeHabilitacaoInsuficientesException, UsuarioExisteException, CampoVazioException, UsuarioNuloException, UsuarioMenorDeIdadeException, UsuarioInseridoComSucessoException {
         controladorUsuarios.checarDadosPessoais(nome, dataDeNascimento, telefone, endereco, cpf, cnh, dataDeHabilitacao);
+    }
+
+    public boolean cpfValido(String cpf){
+        return controladorUsuarios.cpfValido(cpf);
+    }
+
+    public boolean telefoneValido(String telefone){
+        return controladorUsuarios.telefoneValido(telefone);
     }
 
     public void inserirVeiculo(Veiculo veiculo) throws VeiculoExisteException, CampoVazioException, ValorDaDiariaInvalidaException, QuilometragemInvalidaException, VeiculoInseridoComSucessoException {
@@ -95,6 +102,30 @@ public class ServidorLoocalize {
 
     public List<Promocao> listarTodasPromocoes(){
         return controladorPromocoes.listarTodasPromocoes();
+    }
+
+    public void inserirColaborador(Colaborador colaborador) throws AnosDeHabilitacaoInsuficientesException, UsuarioExisteException, CampoVazioException, UsuarioNuloException, UsuarioMenorDeIdadeException, DataDeNascimentoInvalidaException, UsuarioInseridoComSucessoException {
+        controladorUsuarios.inserirUsuario((Usuario) colaborador);
+    }
+
+    public void editarColaborador(Colaborador colaborador, String usuario, String email, String cpf, LocalDate dataDeNascimento, String endereco, String telefone) throws UsuarioNaoExisteException, UsuarioNuloException, UsuarioEditadoComSucessoException {
+        controladorUsuarios.atualizarColaborador((Usuario) colaborador, usuario, colaborador.getSenha(), email, colaborador.getNomeCompleto(), cpf, dataDeNascimento, telefone, endereco);
+    }
+
+    public void deletarColaborador(Colaborador colaborador) throws UsuarioNaoExisteException, UsuarioNuloException {
+        controladorUsuarios.deletarUsuario((Usuario) colaborador);
+    }
+
+    public List<Colaborador> listarTodosColaboradores(){
+        return controladorUsuarios.listarColaboradores();
+    }
+
+    public void deletarCliente(Cliente cliente) throws UsuarioNaoExisteException, UsuarioNuloException {
+        controladorUsuarios.deletarUsuario((Usuario) cliente);
+    }
+
+    public List<Cliente> listarTodosClientes(){
+        return controladorUsuarios.listarClientes();
     }
 
 }
