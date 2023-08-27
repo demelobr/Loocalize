@@ -19,6 +19,11 @@ public class ScreenManager {
     private Scene colaboradorAbaPromocoesScene;
     private Scene colaboradorCadastroPromocaoScene;
     private Scene colaboradorFichaPromocaoScene;
+    private Scene admAbaColaboradoresScene;
+    private Scene admCadastroColaboradorScene;
+    private Scene admFichaColaboradorScene;
+    private Scene admAbaClientesScene;
+    private Scene admCadastroClienteScene;
 
     private LoginController loginController;
     private CadastroClienteContaController cadastroClienteContaController;
@@ -29,6 +34,11 @@ public class ScreenManager {
     private ColaboradorAbaPromocoesController colaboradorAbaPromocoesController;
     private ColaboradorCadastroPromocaoController colaboradorCadastroPromocaoController;
     private ColaboradorFichaPromocaoController colaboradorFichaPromocaoController;
+    private AdmAbaColaboresController admAbaColaboresController;
+    private AdmCadastroColaboradorController admCadastroColaboradorController;
+    private AdmFichaColaboradorController admFichaColaboradorController;
+    private AdmAbaClientesController admAbaClientesController;
+    private AdmCadastroClienteController admCadastroClienteController;
 
 
     public ScreenManager(){
@@ -48,6 +58,8 @@ public class ScreenManager {
     public static void setStg(Stage stg) {
         ScreenManager.stg = stg;
     }
+
+    //Métodos GET das Scenes
 
     public Scene getLoginScene() {
         return loginScene;
@@ -89,6 +101,28 @@ public class ScreenManager {
         return colaboradorFichaPromocaoScene;
     }
 
+    public Scene getAdmAbaColaboradoresScene() {
+        return admAbaColaboradoresScene;
+    }
+
+    public Scene getAdmCadastroColaboradorScene() {
+        return admCadastroColaboradorScene;
+    }
+
+    public Scene getAdmFichaColaboradorScene() {
+        return admFichaColaboradorScene;
+    }
+
+    public Scene getAdmAbaClientesScene() {
+        return admAbaClientesScene;
+    }
+
+    public Scene getAdmCadastroClienteScene() {
+        return admCadastroClienteScene;
+    }
+
+    //Métodos GET dos Controllers
+
     public CadastroClienteContaController getCadastroClienteContaController() {
         return cadastroClienteContaController;
     }
@@ -119,6 +153,26 @@ public class ScreenManager {
 
     public ColaboradorFichaPromocaoController getColaboradorFichaPromocaoController() {
         return colaboradorFichaPromocaoController;
+    }
+
+    public AdmAbaColaboresController getAdmAbaColaboresController() {
+        return admAbaColaboresController;
+    }
+
+    public AdmCadastroColaboradorController getAdmCadastroColaboradorController() {
+        return admCadastroColaboradorController;
+    }
+
+    public AdmFichaColaboradorController getAdmFichaColaboradorController() {
+        return admFichaColaboradorController;
+    }
+
+    public AdmAbaClientesController getAdmAbaClientesController() {
+        return admAbaClientesController;
+    }
+
+    public AdmCadastroClienteController getAdmCadastroClienteController() {
+        return admCadastroClienteController;
     }
 
     private void carregarTelas(){
@@ -160,6 +214,26 @@ public class ScreenManager {
             this.colaboradorFichaPromocaoScene = new Scene(colaboradorFichaPromocaoPane.load());
             this.colaboradorFichaPromocaoController = colaboradorFichaPromocaoPane.getController();
 
+            FXMLLoader admAbaColaboradoresPane = new FXMLLoader(getClass().getResource("adm-aba-colaboradores.fxml"));
+            this.admAbaColaboradoresScene = new Scene(admAbaColaboradoresPane.load());
+            this.admAbaColaboresController = admAbaColaboradoresPane.getController();
+
+            FXMLLoader admCadastroColaboradorPane = new FXMLLoader(getClass().getResource("adm-cadastro-colaborador.fxml"));
+            this.admCadastroColaboradorScene = new Scene(admCadastroColaboradorPane.load());
+            this.admCadastroColaboradorController = admCadastroColaboradorPane.getController();
+
+            FXMLLoader admFichaColaboradorPane = new FXMLLoader(getClass().getResource("adm-ficha-colaborador.fxml"));
+            this.admFichaColaboradorScene = new Scene(admFichaColaboradorPane.load());
+            this.admFichaColaboradorController = admFichaColaboradorPane.getController();
+
+            FXMLLoader admAbaClientesPane = new FXMLLoader(getClass().getResource("adm-aba-clientes.fxml"));
+            this.admAbaClientesScene = new Scene(admAbaClientesPane.load());
+            this.admAbaClientesController = admAbaClientesPane.getController();
+
+            FXMLLoader admCadastroClientePane = new FXMLLoader(getClass().getResource("adm-cadastro-cliente.fxml"));
+            this.admCadastroClienteScene = new Scene(admCadastroClientePane.load());
+            this.admCadastroClienteController = admCadastroClientePane.getController();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -176,6 +250,11 @@ public class ScreenManager {
             case "colaborador-aba-promocoes.fxml" -> stg.setScene(colaboradorAbaPromocoesScene);
             case "colaborador-cadastro-promocao.fxml" -> stg.setScene(colaboradorCadastroPromocaoScene);
             case "colaborador-ficha-promocao.fxml" -> stg.setScene(colaboradorFichaPromocaoScene);
+            case "adm-aba-colaboradores.fxml" -> stg.setScene(admAbaColaboradoresScene);
+            case "adm-cadastro-colaborador.fxml" -> stg.setScene(admCadastroColaboradorScene);
+            case "adm-ficha-colaborador.fxml" -> stg.setScene(admFichaColaboradorScene);
+            case "adm-aba-clientes.fxml" -> stg.setScene(admAbaClientesScene);
+            case "adm-cadastro-cliente.fxml" -> stg.setScene(admCadastroClienteScene);
         }
 
         stg.setTitle(title);
