@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ColaboradorAbaPromocoesController">
+<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AdmAbaColaboresController">
    <top>
       <HBox alignment="CENTER" maxHeight="65.0" minHeight="65.0" prefHeight="65.0" BorderPane.alignment="CENTER">
          <children>
@@ -71,7 +71,7 @@
          <children>
             <VBox alignment="CENTER" maxHeight="350.0" maxWidth="50.0" minHeight="350.0" minWidth="50.0" prefHeight="350.0" prefWidth="50.0" styleClass="nav-bar" stylesheets="@style/style.css">
                <children>
-                  <HBox fx:id="hbBtnColaboradoresAbaColaboradores" alignment="CENTER" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" onMouseClicked="#trocarAbaVeiculos" prefHeight="36.0" prefWidth="36.0">
+                  <HBox fx:id="hbBtnColaboradoresAbaColaboradores" alignment="CENTER" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
                      <children>
                         <Pane maxHeight="32.0" maxWidth="2.0" minHeight="32.0" minWidth="2.0" prefHeight="32.0" prefWidth="2.0" styleClass="selecionador" stylesheets="@style/style.css">
                            <opaqueInsets>
@@ -88,7 +88,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </HBox>
-                  <HBox fx:id="hbBtnClientesAbaColaboradores" alignment="CENTER" layoutX="19.0" layoutY="69.0" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
+                  <HBox fx:id="hbBtnClientesAbaColaboradores" alignment="CENTER" layoutX="19.0" layoutY="69.0" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" onMouseClicked="#trocarAbaClientes" prefHeight="36.0" prefWidth="36.0">
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -316,7 +316,7 @@
                   </VBox>
                   <HBox alignment="CENTER" maxHeight="35.0" maxWidth="290.0" minHeight="35.0" minWidth="290.0" prefHeight="35.0" prefWidth="290.0">
                      <children>
-                        <Button fx:id="btnEditarAbaColaboradores" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#editarPromocao" prefHeight="35.0" prefWidth="100.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Editar">
+                        <Button fx:id="btnEditarAbaColaboradores" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#editarColaborador" prefHeight="35.0" prefWidth="100.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Editar">
                            <HBox.margin>
                               <Insets right="15.0" />
                            </HBox.margin>
@@ -327,7 +327,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btnDeletarAbaColaboradores" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#deletarPromocao" prefHeight="35.0" prefWidth="100.0" styleClass="btn-deletar" stylesheets="@style/style.css" text="Deletar">
+                        <Button fx:id="btnDeletarAbaColaboradores" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#deletarColaborador" prefHeight="35.0" prefWidth="100.0" styleClass="btn-deletar" stylesheets="@style/style.css" text="Deletar">
                            <font>
                               <Font name="Inter Bold" size="12.0" />
                            </font>
@@ -384,7 +384,7 @@
             </HBox>
             <HBox alignment="CENTER" maxHeight="35.0" minHeight="35.0" prefHeight="35.0">
                <children>
-                  <Button fx:id="btnAdicionarAbaColaboradores" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#adicionarPromocao" prefHeight="35.0" prefWidth="100.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Adicionar">
+                  <Button fx:id="btnAdicionarAbaColaboradores" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#adicionarColaborador" prefHeight="35.0" prefWidth="100.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Adicionar">
                      <font>
                         <Font name="Inter Bold" size="12.0" />
                      </font>
@@ -395,7 +395,7 @@
                         <Insets right="15.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnDetalharAbaColaboradores" layoutX="260.0" layoutY="10.0" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#detalharPromocao" prefHeight="35.0" prefWidth="100.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Detalhar">
+                  <Button fx:id="btnDetalharAbaColaboradores" layoutX="260.0" layoutY="10.0" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#detalharColaborador" prefHeight="35.0" prefWidth="100.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Detalhar">
                      <font>
                         <Font name="Inter Bold" size="12.0" />
                      </font>

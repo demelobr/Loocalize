@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ColaboradorFichaPromocaoController">
+<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AdmFichaColaboradorController">
    <top>
       <HBox alignment="CENTER" maxHeight="65.0" minHeight="65.0" prefHeight="65.0" BorderPane.alignment="CENTER">
          <children>
@@ -67,7 +67,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" maxHeight="20.0" minHeight="20.0" prefHeight="20.0">
                      <children>
-                        <Label fx:id="btnVoltarEditarColaborador" onMouseClicked="#trocarColaboradorAbaPromocoes" text="Voltar">
+                        <Label fx:id="btnVoltarEditarColaborador" onMouseClicked="#trocarAbaClientes" text="Voltar">
                            <font>
                               <Font name="Inter Bold" size="14.0" />
                            </font>
@@ -85,9 +85,9 @@
                      <children>
                         <VBox prefHeight="395.0" prefWidth="363.0">
                            <children>
-                              <Label prefHeight="36.0" prefWidth="364.0" text="Edição de Colaboradores" textFill="#008dd8">
+                              <Label prefHeight="36.0" prefWidth="387.0" text="Edição de Colaboradores" textFill="#008dd8">
                                  <font>
-                                    <Font name="Inter Bold" size="30.0" />
+                                    <Font name="Inter Bold" size="24.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets bottom="15.0" />
@@ -215,7 +215,7 @@
                   <Pane prefHeight="0.0" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER" maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
                      <children>
-                        <Button fx:id="btnSalvarEditarColaborador" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#salvarEdicaoPromocao" prefHeight="40.0" prefWidth="200.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Salvar">
+                        <Button fx:id="btnSalvarEditarColaborador" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#salvarEdicaoColaborador" prefHeight="40.0" prefWidth="200.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Salvar">
                            <font>
                               <Font name="Inter Bold" size="14.0" />
                            </font>

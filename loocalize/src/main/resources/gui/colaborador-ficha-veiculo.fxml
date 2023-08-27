@@ -269,7 +269,7 @@
                   <Pane prefHeight="0.0" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER" maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
                      <children>
-                        <Button fx:id="btnCadastrarEditarVeiculo" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#salvarEdicaoVeiculo" prefHeight="40.0" prefWidth="200.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Salvar">
+                        <Button fx:id="btnSalvarEditarVeiculo" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#salvarEdicaoVeiculo" prefHeight="40.0" prefWidth="200.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Salvar">
                            <font>
                               <Font name="Inter Bold" size="14.0" />
                            </font>

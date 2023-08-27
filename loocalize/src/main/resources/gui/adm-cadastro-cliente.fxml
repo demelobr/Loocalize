@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ColaboradorFichaPromocaoController">
+<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AdmCadastroClienteController">
    <top>
       <HBox alignment="CENTER" maxHeight="65.0" minHeight="65.0" prefHeight="65.0" BorderPane.alignment="CENTER">
          <children>
@@ -68,7 +68,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" maxHeight="20.0" minHeight="20.0" prefHeight="20.0">
                      <children>
-                        <Label fx:id="btnVoltarCadastroCliente" onMouseClicked="#trocarColaboradorAbaPromocoes" text="Voltar">
+                        <Label fx:id="btnVoltarCadastroCliente" onMouseClicked="#trocarAdmAbaClientes" text="Voltar">
                            <font>
                               <Font name="Inter Bold" size="14.0" />
                            </font>
@@ -275,7 +275,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="tfCpfCadastroCliente" maxHeight="40.0" maxWidth="250.0" minHeight="40.0" minWidth="250.0" prefHeight="40.0" prefWidth="250.0" promptText="000000000000" styleClass="input-box" stylesheets="@style/style.css">
+                                    <TextField fx:id="tfCnhCadastroCliente" maxHeight="40.0" maxWidth="250.0" minHeight="40.0" minWidth="250.0" prefHeight="40.0" prefWidth="250.0" promptText="000000000000" styleClass="input-box" stylesheets="@style/style.css">
                                        <font>
                                           <Font name="Inter Bold" size="14.0" />
                                        </font>
@@ -292,7 +292,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <DatePicker fx:id="dpDataDeNascimentoCadastroCliente" maxHeight="40.0" maxWidth="250.0" minHeight="40.0" minWidth="250.0" prefHeight="40.0" prefWidth="250.0" promptText="05/08/2023" styleClass="input-box" stylesheets="@style/style.css" />
+                                    <DatePicker fx:id="dpDataDeHabilitacaoCadastroCliente" maxHeight="40.0" maxWidth="250.0" minHeight="40.0" minWidth="250.0" prefHeight="40.0" prefWidth="250.0" promptText="05/08/2023" styleClass="input-box" stylesheets="@style/style.css" />
                                  </children>
                               </VBox>
                            </children>
@@ -302,7 +302,7 @@
                   <Pane prefHeight="0.0" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER" maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
                      <children>
-                        <Button fx:id="btnSalvarCadastroCliente" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#salvarEdicaoPromocao" prefHeight="40.0" prefWidth="200.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Cadastrar">
+                        <Button fx:id="btnSalvarCadastroCliente" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="40.0" prefWidth="200.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Cadastrar">
                            <font>
                               <Font name="Inter Bold" size="14.0" />
                            </font>
