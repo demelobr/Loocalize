@@ -146,6 +146,10 @@ public class CadastroClientePessoalController {
                 lbPushMsgCadastroPessoal.setText(e.getMessage());
                 hbPushMsgCadastroPessoal.getStyleClass().setAll("push-msg-error");
                 hbPushMsgCadastroPessoal.setVisible(true);
+            } catch (UsuarioInseridoComSucessoException e) {
+                lbPushMsgCadastroPessoal.setText(e.getMessage());
+                hbPushMsgCadastroPessoal.getStyleClass().setAll("push-msg-error");
+                hbPushMsgCadastroPessoal.setVisible(true);
             }
         }
     }
