@@ -88,7 +88,7 @@
                         </Pane>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../../Downloads/Catalogo.png" />
+                              <Image url="@images/Catalogo.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -100,7 +100,7 @@
                      <children>
                         <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../../Downloads/locacao.png" />
+                              <Image url="@images/locacao.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -112,7 +112,7 @@
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../../Downloads/configuracao.png" />
+                              <Image url="@images/configuracao.png" />
                            </image>
                         </ImageView>
                      </children>
