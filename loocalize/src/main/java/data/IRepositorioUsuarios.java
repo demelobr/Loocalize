@@ -1,5 +1,7 @@
 package data;
 
+import models.Cliente;
+import models.Colaborador;
 import models.Usuario;
 
 import java.time.LocalDate;
@@ -17,11 +19,11 @@ public interface IRepositorioUsuarios {
 
     List<Usuario> listarTodosUsuarios();
 
-    List<Usuario> listarColaboradores();
+    List<Colaborador> listarColaboradores();
 
     List<Usuario> listarAdministradores();
 
-    List<Usuario> listarClientes();
+    List<Cliente> listarClientes();
 
     boolean existeUsuario(String usuario);
 
