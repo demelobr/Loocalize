@@ -1,6 +1,7 @@
 package gui;
 
 import exception.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -148,8 +149,21 @@ public class CadastroClientePessoalController {
                 hbPushMsgCadastroPessoal.setVisible(true);
             } catch (UsuarioInseridoComSucessoException e) {
                 lbPushMsgCadastroPessoal.setText(e.getMessage());
-                hbPushMsgCadastroPessoal.getStyleClass().setAll("push-msg-error");
+                hbPushMsgCadastroPessoal.getStyleClass().setAll("push-msg-success");
                 hbPushMsgCadastroPessoal.setVisible(true);
+
+                new Thread(() -> {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException ev) {
+                        ev.printStackTrace();
+                    }
+                    Platform.runLater(() -> {
+                        this.resetarTela();
+                        ScreenManager sm = ScreenManager.getInstance();
+                        sm.changeScene("login.fxml", "Loocalize - Login");
+                    });
+                }).start();
             }
         }
     }

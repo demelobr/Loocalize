@@ -24,6 +24,8 @@ public class ScreenManager {
     private Scene admFichaColaboradorScene;
     private Scene admAbaClientesScene;
     private Scene admCadastroClienteScene;
+    private Scene clienteAbaCatalogoScene;
+    private Scene clienteAbaMinhasLocacoesScene;
 
     private LoginController loginController;
     private CadastroClienteContaController cadastroClienteContaController;
@@ -39,6 +41,8 @@ public class ScreenManager {
     private AdmFichaColaboradorController admFichaColaboradorController;
     private AdmAbaClientesController admAbaClientesController;
     private AdmCadastroClienteController admCadastroClienteController;
+    private ClienteAbaCatalogoController clienteAbaCatalogoController;
+    private ClienteAbaMinhasLocacoesController clienteAbaMinhasLocacoesController;
 
 
     public ScreenManager(){
@@ -121,6 +125,14 @@ public class ScreenManager {
         return admCadastroClienteScene;
     }
 
+    public Scene getClienteAbaCatalogoScene() {
+        return clienteAbaCatalogoScene;
+    }
+
+    public Scene getClienteAbaMinhasLocacoesScene() {
+        return clienteAbaMinhasLocacoesScene;
+    }
+
     //Métodos GET dos Controllers
 
     public CadastroClienteContaController getCadastroClienteContaController() {
@@ -173,6 +185,14 @@ public class ScreenManager {
 
     public AdmCadastroClienteController getAdmCadastroClienteController() {
         return admCadastroClienteController;
+    }
+
+    public ClienteAbaCatalogoController getClienteAbaCatalogoController() {
+        return clienteAbaCatalogoController;
+    }
+
+    public ClienteAbaMinhasLocacoesController getClienteAbaMinhasLocacoesController() {
+        return clienteAbaMinhasLocacoesController;
     }
 
     private void carregarTelas(){
@@ -234,6 +254,14 @@ public class ScreenManager {
             this.admCadastroClienteScene = new Scene(admCadastroClientePane.load());
             this.admCadastroClienteController = admCadastroClientePane.getController();
 
+            FXMLLoader clienteAbaCatalogoPane = new FXMLLoader(getClass().getResource("cliente-aba-catalogo.fxml"));
+            this.clienteAbaCatalogoScene = new Scene(clienteAbaCatalogoPane.load());
+            this.clienteAbaCatalogoController = clienteAbaCatalogoPane.getController();
+
+            FXMLLoader clienteAbaMinhasLocacoesPane = new FXMLLoader(getClass().getResource("cliente-aba-locacoes.fxml"));
+            this.clienteAbaMinhasLocacoesScene = new Scene(clienteAbaMinhasLocacoesPane.load());
+            this.clienteAbaMinhasLocacoesController = clienteAbaMinhasLocacoesPane.getController();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -255,6 +283,8 @@ public class ScreenManager {
             case "adm-ficha-colaborador.fxml" -> stg.setScene(admFichaColaboradorScene);
             case "adm-aba-clientes.fxml" -> stg.setScene(admAbaClientesScene);
             case "adm-cadastro-cliente.fxml" -> stg.setScene(admCadastroClienteScene);
+            case "cliente-aba-catalogo.fxml" -> stg.setScene(clienteAbaCatalogoScene);
+            case "cliente-aba-locacoes.fxml" -> stg.setScene(clienteAbaMinhasLocacoesScene);
         }
 
         stg.setTitle(title);

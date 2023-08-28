@@ -4,6 +4,7 @@ import data.IRepositorioLocacoes;
 import data.IRepositorioPromocoes;
 import data.RepositorioLocacoes;
 import data.RepositorioPromocoes;
+import exception.LocacaoFeitaComSucessoException;
 import models.Cliente;
 import models.Locacao;
 import models.Promocao;
@@ -32,7 +33,7 @@ public class ControladorLocacoes implements IControladorLocacoes{
     }
 
     @Override
-    public void inserirLocacao(Locacao locacao) {
+    public void inserirLocacao(Locacao locacao) throws LocacaoFeitaComSucessoException {
         if(locacao != null){
             if(!repLocacoes.existeLocacao(locacao.getId())){
                 if(locacao.getVeiculo() != null && locacao.getCliente() != null && locacao.getPromocao() != null &&
@@ -41,6 +42,7 @@ public class ControladorLocacoes implements IControladorLocacoes{
                         locacao.setId(repLocacoes.gerarId());
                     }while (repLocacoes.existeLocacao(locacao.getId()));
                     repLocacoes.inserir(locacao);
+                    throw new LocacaoFeitaComSucessoException();
                 }
             }else{
                 // Levantar exception de Locação não existente
@@ -117,7 +119,7 @@ public class ControladorLocacoes implements IControladorLocacoes{
                 }
 
                 if(locacao.getPromocao() == null){
-                    locacao.setPromocao(new Promocao("Nenhuma", 0, 0, 0, LocalDate.now(), LocalDateTime.now(), true));
+                    locacao.setPromocao(new Promocao("Nenhuma", 0, 0, 0, LocalDate.now(), LocalDate.now(), true));
                 }
 
             }else{

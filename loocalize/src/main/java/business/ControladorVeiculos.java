@@ -96,6 +96,11 @@ public class ControladorVeiculos implements IControladorVeiculos{
         }
     }
 
+    @Override
+    public void setarVeiculoComoAlugado(Veiculo veiculo, boolean disponibilidade) throws VeiculoNaoExisteException, VeiculoEditadoComSucessoException {
+        this.atualizarVeiculo(veiculo, veiculo.getModelo(), veiculo.getMarca(), veiculo.getPlaca(), veiculo.getAno(), veiculo.getQuilometragem(), veiculo.getQtdDeLocacao(), veiculo.getValorDaDiaria(), veiculo.getFotoDoVeiculo(), disponibilidade);
+    }
+
     //Lista todos os veículos
     @Override
     public List<Veiculo> listarTodosVeiculos(){

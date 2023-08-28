@@ -1,22 +1,28 @@
 package business;
+import exception.*;
 import models.Promocao;
+import models.Usuario;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IControladorPromocoes {
 
-    void inserirPromocao (Promocao promocao);
+    void inserirPromocao (Promocao promocao) throws PromocaoExisteException, PromocaoNulaException, PromocaoInseridaComSucessoException;
 
-    void atualizarPromocao(Promocao promocao, String titulo, int porcentagemDeDesconto, int qtdMinimaDeDiarias, int qtdMinimaDeLocacoes, LocalDateTime dataDeExpiracao, boolean ativa);
+    void atualizarPromocao(Promocao promocao, String titulo, int porcentagemDeDesconto, int qtdMinimaDeDiarias, int qtdMinimaDeLocacoes, LocalDate dataDeExpiracao, boolean ativa) throws PromocaoNulaException, PromocaoNaoExisteException, PromocaoEditadaComSucessoException;
 
-    public void deletarPromocao(Promocao promocao);
+    void deletarPromocao(Promocao promocao);
 
-    public List<Promocao> listarTodasPromocoes();
+    List<Promocao> listarTodasPromocoes();
 
-    public boolean existePromocao(String id);
+    boolean existePromocao(String id);
 
-    public Promocao buscarPromocao(String id);
+    Promocao buscarPromocao(String id);
+
+    Promocao buscarPorPromocaoAplicavel(Usuario usuario, int qtdDeDiarias);
+
 
     public String gerarId();
 }

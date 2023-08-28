@@ -18,6 +18,8 @@ public interface IControladorVeiculos{
     //Exclui veículo
     void deletarVeiculo(Veiculo veiculo);
 
+    void setarVeiculoComoAlugado(Veiculo veiculo, boolean disponibilidade) throws VeiculoNaoExisteException, VeiculoEditadoComSucessoException;
+
     //Lista todos os veículos
     List<Veiculo> listarTodosVeiculos();
 
