@@ -32,8 +32,7 @@ public class ServidorLoocalize {
     public void criarAdm(){
         if(!controladorUsuarios.existeUsuario("admin")){
             try {
-                controladorUsuarios.inserirUsuario((Usuario) new Colaborador("demelobr", "12345", "demelobr@gmail.com", "Bruno Melo", "123.456.789-09", LocalDate.of(1997, 2, 24), "(81) 99999-9999", "Rua Fictícia", true));
-//                controladorUsuarios.inserirUsuario((Usuario) new Colaborador("demelobr", "12345", "demelobr@gmail.com", "Bruno Melo", "123.456.789-09", LocalDate.of(1997, 2, 24), "(81) 99999-9999", "Rua Fictícia", false));
+                controladorUsuarios.inserirUsuario((Usuario) new Colaborador("admin", "admin", "demelobr@gmail.com", "Bruno Melo", "123.456.789-09", LocalDate.of(1997, 2, 24), "(81) 99999-9999", "Rua Fictícia", true));
             } catch (UsuarioNuloException e) {
                 throw new RuntimeException(e);
             } catch (UsuarioExisteException e) {
@@ -88,6 +87,14 @@ public class ServidorLoocalize {
         return controladorVeiculos.listarTodosVeiculos();
     }
 
+    public Veiculo buscarVeiculo(String id){
+        return controladorVeiculos.buscarVeiculo(id);
+    }
+
+    public void setarDisponibilidadeDoVeiculo(Veiculo veiculo, boolean disponibilidade) throws VeiculoNaoExisteException, VeiculoEditadoComSucessoException {
+        controladorVeiculos.setarVeiculoComoAlugado(veiculo, disponibilidade);
+    }
+
     public void inserirPromocao(Promocao promocao) throws PromocaoNulaException, PromocaoExisteException, PromocaoInseridaComSucessoException {
         controladorPromocoes.inserirPromocao(promocao);
     }
@@ -126,6 +133,14 @@ public class ServidorLoocalize {
 
     public List<Cliente> listarTodosClientes(){
         return controladorUsuarios.listarClientes();
+    }
+
+    public void inserirLocacao(Locacao locacao) throws LocacaoFeitaComSucessoException {
+        controladorLocacoes.inserirLocacao(locacao);
+    }
+
+    public Promocao buscarPorPromocaoAplicavel(Usuario usuario, int qtdDeDiarias){
+        return controladorPromocoes.buscarPorPromocaoAplicavel(usuario, qtdDeDiarias);
     }
 
 }
