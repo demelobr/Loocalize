@@ -86,6 +86,12 @@ public class LoginController {
                 hbPushMsgLogin.getStyleClass().setAll("push-msg-success");
                 hbPushMsgLogin.setVisible(true);
 
+                ScreenManager sm = ScreenManager.getInstance();
+
+                if(e.getFxml().equals("cliente-aba-catalogo.fxml")){
+                    sm.getClienteAbaCatalogoController().setUsuarioLogado(e.getUsuario());
+                }
+
                 new Thread(() -> {
                     try {
                         Thread.sleep(2000);
@@ -94,7 +100,7 @@ public class LoginController {
                     }
                     Platform.runLater(() -> {
                         this.resetarTela();
-                        ScreenManager sm = ScreenManager.getInstance();
+                        System.out.println(e.getFxml());
                         sm.changeScene(e.getFxml(), e.getTitle());
                     });
                 }).start();
