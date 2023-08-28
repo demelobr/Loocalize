@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ColaboradorAbaVeiculosController">
+<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ClienteAbaMinhasLocacoesController">
    <top>
       <HBox alignment="CENTER" maxHeight="65.0" minHeight="65.0" prefHeight="65.0" BorderPane.alignment="CENTER">
          <children>
@@ -71,11 +71,11 @@
          <children>
             <VBox alignment="CENTER" maxHeight="350.0" maxWidth="50.0" minHeight="350.0" minWidth="50.0" prefHeight="350.0" prefWidth="50.0" styleClass="nav-bar" stylesheets="@style/style.css">
                <children>
-                  <HBox fx:id="hbBtnCatalogoAbaMinhasLocacoes" alignment="CENTER" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
+                  <HBox fx:id="hbBtnCatalogoAbaMinhasLocacoes" alignment="CENTER" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" onMouseClicked="#trocarAbaCatalogo" prefHeight="36.0" prefWidth="36.0">
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../Pictures/image2.png" />
+                              <Image url="@images/Catalogo.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -83,7 +83,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </HBox>
-                  <HBox fx:id="hbBtnAbaMinhasLocacoes" alignment="CENTER" layoutX="19.0" layoutY="69.0" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" onMouseClicked="#trocarAbaPromocoes" prefHeight="36.0" prefWidth="36.0">
+                  <HBox fx:id="hbBtnAbaMinhasLocacoes" alignment="CENTER" layoutX="19.0" layoutY="69.0" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
                      <children>
                         <Pane maxHeight="32.0" maxWidth="2.0" minHeight="32.0" minWidth="2.0" prefHeight="32.0" prefWidth="2.0" styleClass="selecionador" stylesheets="@style/style.css">
                            <opaqueInsets>
@@ -92,7 +92,7 @@
                         </Pane>
                         <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../Pictures/image1.png" />
+                              <Image url="@images/locacao.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -101,7 +101,7 @@
                      </cursor>
                   </HBox>
                   <Pane prefHeight="215.0" prefWidth="50.0" />
-                  <HBox fx:id="hbSairAbaMinhasLocacoes" alignment="CENTER" layoutX="19.0" layoutY="53.0" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
+                  <HBox fx:id="hbSairAbaMinhasLocacoes" alignment="CENTER" layoutX="19.0" layoutY="53.0" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" onMouseClicked="#trocarTelaLogin" prefHeight="36.0" prefWidth="36.0">
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#trocarTelaLogin" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -253,7 +253,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                      <children>
-                        <Button fx:id="btnDevolverAbaMinhasLocacoes" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Devolver">
+                        <Button fx:id="btnDevolverAbaMinhasLocacoes" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#devolverVeiculo" prefHeight="35.0" prefWidth="100.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Devolver">
                            <font>
                               <Font name="Inter Bold" size="12.0" />
                            </font>
@@ -291,17 +291,15 @@
                   <TableView fx:id="tvLocacoesAbaMinhasLocacoes" prefHeight="419.0" prefWidth="628.0">
                     <columns>
                       <TableColumn fx:id="tcIdAbaMinhasLocacoes" minWidth="100.0" prefWidth="125.0" text="ID" />
-                      <TableColumn fx:id="tcClienteAbaMinhasLocacoes" minWidth="100.0" prefWidth="125.0" text="Cliente" />
-                        <TableColumn fx:id="tcVeiculoAbaMinhasLocacoes" minWidth="100.0" prefWidth="125.0" text="Veículo" />
                         <TableColumn fx:id="tcDataMinhasLocacoes" minWidth="100.0" prefWidth="125.0" text="Data de Locação" />
-                        <TableColumn fx:id="tcAbaMinhasLocacoes" minWidth="100.0" prefWidth="125.0" text="Devolvido" />
+                        <TableColumn fx:id="tcDevolvidoAbaMinhasLocacoes" minWidth="100.0" prefWidth="125.0" text="Devolvido" />
                     </columns>
                   </TableView>
                </children>
             </HBox>
             <HBox alignment="CENTER" maxHeight="35.0" minHeight="35.0" prefHeight="35.0">
                <children>
-                  <Button fx:id="btnDetalharAbaMinhasLocacoes" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Detalhar">
+                  <Button fx:id="btnDetalharAbaMinhasLocacoes" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#detalharLocacao" prefHeight="35.0" prefWidth="100.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Detalhar">
                      <font>
                         <Font name="Inter Bold" size="12.0" />
                      </font>

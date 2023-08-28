@@ -1,6 +1,7 @@
 package gui;
 
 import business.ServidorLoocalize;
+import data.Teste;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,6 +34,11 @@ public class Application extends javafx.application.Application {
     public static void main(String[] args) {
         Application app = new Application();
         app.server.criarAdm();
+        Teste mc = new Teste();
+        mc.motandoCatalogo();
+        mc.criarColaboradorTeste();
+        mc.criarClienteTeste();
+        mc.criarPromocoesTeste();
         launch();
     }
 
