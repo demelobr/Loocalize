@@ -1,9 +1,17 @@
+.background-white{
+	-fx-background-color: #f8f8f8;
+}
+
 .title{
 	-fx-color: #008dd8;
 }
 
-.background-white{
-	-fx-background-color: #f8f8f8;
+.fonte-white{
+	-fx-color: #ffffff;
+}
+
+.font-black{
+	-fx-color: #1e1e1e;
 }
 
 .campo-img{
@@ -92,4 +100,18 @@
 
 .btn-deletar:pressed{
 	-fx-background-color: #FFA1B8;
+}
+
+.card{
+	-fx-background-radius: 10;
+}
+
+.card-legenda-alugado{
+	-fx-background-color: #008DD8;
+	-fx-background-radius: 10;
+}
+
+.card-leganda-devolvido{
+	-fx-background-color: #ffffff;
+	-fx-background-radius: 10;
 }

@@ -294,7 +294,7 @@
                   <TableView fx:id="tvClientesAbaClientes" editable="true" stylesheets="@style/style.css">
                     <columns>
                       <TableColumn fx:id="tcIdAbaClientes" minWidth="100.0" prefWidth="125.0" text="ID" />
-                      <TableColumn fx:id="tcNomeAbaClientes" minWidth="150.0" prefWidth="174.0" text="Nome" />
+                      <TableColumn fx:id="tcNomeAbaClientes" minWidth="150.0" prefWidth="175.0" text="Nome" />
                         <TableColumn fx:id="tcUsuarioAbaClientes" minWidth="100.0" prefWidth="125.0" text="Usuário" />
                         <TableColumn fx:id="tcEmailAbaClientes" minWidth="150.0" prefWidth="175.0" text="Email" />
                     </columns>
