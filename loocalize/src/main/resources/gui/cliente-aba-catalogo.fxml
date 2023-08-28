@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ColaboradorAbaVeiculosController">
+<BorderPane maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="background-white" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ClienteAbaCatalogoController">
    <top>
       <HBox alignment="CENTER" maxHeight="65.0" minHeight="65.0" prefHeight="65.0" BorderPane.alignment="CENTER">
          <children>
@@ -96,7 +90,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </HBox>
-                  <HBox fx:id="hbBtnMinhasLocacoesCatalogoVeiculos" alignment="CENTER" layoutX="19.0" layoutY="69.0" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" onMouseClicked="#trocarAbaPromocoes" prefHeight="36.0" prefWidth="36.0">
+                  <HBox fx:id="hbBtnMinhasLocacoesCatalogoVeiculos" alignment="CENTER" layoutX="19.0" layoutY="69.0" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" onMouseClicked="#trocarAbaMinhasLocacoes" prefHeight="36.0" prefWidth="36.0">
                      <children>
                         <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -108,22 +102,10 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </HBox>
-                  <HBox fx:id="hbBtnConfiguracaoCatalogoVeiculos" alignment="CENTER" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" onMouseClicked="#trocarAbaPromocoes" prefHeight="36.0" prefWidth="36.0">
+                  <Pane prefHeight="215.0" prefWidth="50.0" />
+                  <HBox fx:id="hbSairAbaCatalogoVeiculos" alignment="CENTER" layoutX="19.0" layoutY="53.0" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" onMouseClicked="#trocarTelaLogin" prefHeight="36.0" prefWidth="36.0">
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/configuracao.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
-                  <Pane prefHeight="183.0" prefWidth="50.0" />
-                  <HBox fx:id="hbSairAbaCatalogoVeiculos" alignment="CENTER" layoutX="19.0" layoutY="53.0" maxHeight="36.0" maxWidth="36.0" minHeight="36.0" minWidth="36.0" prefHeight="36.0" prefWidth="36.0">
-                     <children>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#trocarTelaLogin" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/sign-out-svgrepo-com.png" />
                            </image>
@@ -139,9 +121,9 @@
       </HBox>
    </left>
    <right>
-      <HBox alignment="CENTER" maxHeight="428.0" maxWidth="305.0" minHeight="418.0" minWidth="215.0" prefHeight="480.0" prefWidth="244.0" BorderPane.alignment="BOTTOM_CENTER">
+      <HBox alignment="CENTER" maxHeight="495.0" maxWidth="270.0" minHeight="495.0" minWidth="270.0" prefHeight="495.0" prefWidth="270.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox fx:id="EscolhaCatalogoVeiculo" alignment="BOTTOM_CENTER" maxHeight="428.0" maxWidth="215.0" minHeight="428.0" minWidth="215.0" stylesheets="@style/style.css">
+            <VBox fx:id="EscolhaCatalogoVeiculo" alignment="CENTER" maxHeight="475.0" maxWidth="230.0" minHeight="475.0" minWidth="230.0" prefHeight="475.0" prefWidth="230.0" stylesheets="@style/style.css">
                <styleClass>
                   <String fx:value="caixa-de-selecao" />
                   <String fx:value="shadow" />
@@ -184,13 +166,13 @@
                         </HBox>
                         <HBox maxHeight="20.0" minHeight="20.0" prefHeight="20.0">
                            <children>
-                              <Label prefHeight="20.0" prefWidth="194.0" text="Valor da diaria" textFill="#1e1e1e">
+                              <Label prefHeight="20.0" prefWidth="227.0" text="Valor da diária" textFill="#1e1e1e">
                                  <font>
                                     <Font name="Inter Regular" size="12.0" />
                                  </font>
                               </Label>
                               <Pane prefHeight="200.0" prefWidth="200.0" />
-                              <Label fx:id="lbDiariaCatalogoVeiculos" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="171.0" text="R$100" textFill="#1e1e1e">
+                              <Label fx:id="lbDiariaCatalogoVeiculos" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="193.0" text="R$100" textFill="#1e1e1e">
                                  <font>
                                     <Font name="Inter Regular" size="12.0" />
                                  </font>
@@ -226,27 +208,6 @@
                         </HBox>
                         <HBox maxHeight="20.0" minHeight="20.0" prefHeight="20.0">
                            <children>
-                              <Label prefHeight="20.0" prefWidth="194.0" text="Marca" textFill="#1e1e1e">
-                                 <font>
-                                    <Font name="Inter Regular" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Pane prefHeight="200.0" prefWidth="200.0" />
-                              <Label fx:id="lbMarcaCatalogoVeiculos" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="245.0" text="Renault" textFill="#1e1e1e">
-                                 <font>
-                                    <Font name="Inter Regular" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <VBox.margin>
-                              <Insets bottom="15.0" left="15.0" right="15.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox maxHeight="20.0" minHeight="20.0" prefHeight="20.0">
-                           <children>
                               <Label prefHeight="20.0" prefWidth="194.0" text="Km" textFill="#1e1e1e">
                                  <font>
                                     <Font name="Inter Regular" size="12.0" />
@@ -266,16 +227,78 @@
                               <Insets bottom="15.0" left="15.0" right="15.0" />
                            </VBox.margin>
                         </HBox>
+                        <HBox layoutX="25.0" layoutY="163.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0">
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="182.0" text="Promoção" textFill="#1e1e1e">
+                                 <font>
+                                    <Font name="Inter Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbPromocaoCatalogoVeiculos" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="246.0" text="diadospais10off" textFill="#1e1e1e">
+                                 <font>
+                                    <Font name="Inter Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Diárias">
+                                       <font>
+                                          <Font name="Inter Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Spinner fx:id="spDiariasCatalogoVeiculos" editable="true" maxHeight="30.0" maxWidth="60.0" minHeight="30.0" minWidth="60.0" prefHeight="30.0" prefWidth="60.0">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Spinner>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <HBox alignment="CENTER" prefHeight="25.0" prefWidth="119.0">
+                                 <children>
+                                    <Pane prefHeight="50.0" prefWidth="20.0" HBox.hgrow="ALWAYS" />
+                                    <ImageView fx:id="imgPromocaoCatalogoVeiculos" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/offer-svgrepo-com-black.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="lbPrecoCatalogoVeiculos" prefHeight="20.0" prefWidth="99.0" text="R$ 360,00">
+                                       <font>
+                                          <Font name="Inter Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </HBox>
                      </children>
                   </VBox>
-                  <HBox alignment="CENTER" maxHeight="35.0" maxWidth="290.0" minHeight="35.0" minWidth="290.0" prefHeight="35.0" prefWidth="290.0">
+                  <HBox alignment="CENTER" maxHeight="35.0" maxWidth="290.0" minHeight="35.0" minWidth="212.0" prefHeight="35.0" prefWidth="212.0">
                      <children>
-                        <Button fx:id="btnAlugarCatalogoVeiculos" contentDisplay="CENTER" maxHeight="70.0" maxWidth="124.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#editarVeiculo" prefHeight="70.0" prefWidth="116.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Alugar!">
-                           <HBox.margin>
-                              <Insets bottom="20.0" />
-                           </HBox.margin>
+                        <Button fx:id="btnAlugarCatalogoVeiculos" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#locarVeiculo" prefHeight="35.0" prefWidth="100.0" styleClass="btn-entrar" stylesheets="@style/style.css" text="Alugar!">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Inter Bold" size="12.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -309,16 +332,18 @@
                   <Insets bottom="20.0" top="20.0" />
                </VBox.margin>
             </HBox>
-            <HBox styleClass="transparent" stylesheets="@style/style.css" />
-            <ScrollPane fx:id="scrollCatalogoVeiculo" prefHeight="570.0" prefWidth="785.0" styleClass="transparent" stylesheets="@style/style.css" VBox.vgrow="ALWAYS">
-               <content>
-                  <GridPane fx:id="gridCatalogoVeiculo" prefHeight="52.0" prefWidth="100.0">
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                     </rowConstraints>
-                  </GridPane>
-               </content>
-            </ScrollPane>
+            <HBox alignment="TOP_CENTER" prefHeight="238.0" prefWidth="635.0" styleClass="transparent" stylesheets="@style/style.css" VBox.vgrow="ALWAYS">
+               <children>
+                  <ScrollPane prefHeight="418.0" prefWidth="493.0" styleClass="transparent" stylesheets="@style/style.css">
+                     <content>
+                        <GridPane fx:id="gridCatalogoVeiculo" prefHeight="0.0" prefWidth="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.0" minWidth="215.0" prefWidth="215.0" />
+                          </columnConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+               </children></HBox>
          </children>
          <BorderPane.margin>
             <Insets right="15.0" />
