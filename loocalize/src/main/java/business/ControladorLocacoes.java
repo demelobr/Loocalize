@@ -117,7 +117,7 @@ public class ControladorLocacoes implements IControladorLocacoes{
                 }
 
                 if(locacao.getPromocao() == null){
-                    locacao.setPromocao(new Promocao("Nenhuma", 0, 0, 0, LocalDate.now(), LocalDate.now(), true));
+                    locacao.setPromocao(new Promocao("Nenhuma", 0, 0, 0, LocalDate.now(), LocalDateTime.now(), true));
                 }
 
             }else{

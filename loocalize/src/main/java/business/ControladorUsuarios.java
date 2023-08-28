@@ -34,7 +34,7 @@ public class ControladorUsuarios implements IControladorUsuarios{
         return instance;
     }
     @Override
-    public void inserirUsuario(Usuario usuario) throws UsuarioNuloException, UsuarioExisteException, CampoVazioException, DataDeNascimentoInvalidaException, UsuarioMenorDeIdadeException, AnosDeHabilitacaoInsuficientesException, UsuarioInseridoComSucessoException {
+    public void inserirUsuario(Usuario usuario) throws UsuarioNuloException, UsuarioExisteException, CampoVazioException, DataDeNascimentoInvalidaException, UsuarioMenorDeIdadeException, AnosDeHabilitacaoInsuficientesException {
         if(usuario != null){
             if(!repUsuarios.existeUsuario(usuario.getUsuario())){
                 if(usuario instanceof Colaborador){
@@ -47,7 +47,6 @@ public class ControladorUsuarios implements IControladorUsuarios{
                                    usuario.setId(repUsuarios.gerarId());
                                }while (repUsuarios.existeUsuario(usuario.getId()));
                                repUsuarios.inserir(usuario);
-                               throw new UsuarioInseridoComSucessoException();
                            }else{
                                throw new DataDeNascimentoInvalidaException(((Colaborador) usuario).getDataNascimento());
                            }
@@ -91,7 +90,7 @@ public class ControladorUsuarios implements IControladorUsuarios{
     }
 
     @Override
-    public void atualizarColaborador(Usuario usuario, String user, String senha, String email, String nomeCompleto, String cpf, LocalDate dataDeNascimento, String telefone, String endereco) throws UsuarioNaoExisteException, UsuarioNuloException, UsuarioEditadoComSucessoException {
+    public void atualizarColaborador(Usuario usuario, String user, String senha, String email, String nomeCompleto, String cpf, LocalDate dataDeNascimento, String telefone, String endereco) throws UsuarioNaoExisteException, UsuarioNuloException {
         if(usuario != null){
             if(this.existeUsuario(usuario.getUsuario())){
                 if(user.isEmpty() || usuario.getUsuario().equals(user) || this.existeUsuario(user)){
@@ -119,7 +118,6 @@ public class ControladorUsuarios implements IControladorUsuarios{
                     endereco = ((Colaborador) usuario).getEndereco();
                 }
                 repUsuarios.atualizarColaborador(usuario, user, senha, email, nomeCompleto, cpf, dataDeNascimento, telefone, endereco);
-                throw new UsuarioEditadoComSucessoException();
             }else{
                 throw new UsuarioNaoExisteException(usuario.getUsuario());
             }
@@ -193,7 +191,7 @@ public class ControladorUsuarios implements IControladorUsuarios{
 
             if(user.getUsuario().equals(usuario) && user.getSenha().equals(senha)){
                 if(user instanceof Colaborador && ((Colaborador) user).isAdm()){
-                    throw new UsuarioLogadoComSucessoException("adm-aba-colaboradores.fxml", "Loocalize - Colaborador Adm");
+                    throw new UsuarioLogadoComSucessoException("telaPrincipalColaboradorAdm.fmxl", "Loocalize - Colaborador Adm");
                 }else if(user instanceof Colaborador && !((Colaborador) user).isAdm()){
                     throw new UsuarioLogadoComSucessoException("colaborador-aba-veiculos.fxml", "Loocalize - Colaborador");
                 }else{
@@ -224,7 +222,7 @@ public class ControladorUsuarios implements IControladorUsuarios{
         }
     }
 
-    public void checarDadosPessoais(String nome, LocalDate dataDeNascimento, String telefone, String endereco, String cpf, String cnh, LocalDate dataDeHabilitacao) throws CpfInvalidoException, TelefoneInvalidoException, DataDeHabilitacaoInvalidaException, DataDeNascimentoInvalidaException, AnosDeHabilitacaoInsuficientesException, UsuarioExisteException, CampoVazioException, UsuarioNuloException, UsuarioMenorDeIdadeException, UsuarioInseridoComSucessoException {
+    public void checarDadosPessoais(String nome, LocalDate dataDeNascimento, String telefone, String endereco, String cpf, String cnh, LocalDate dataDeHabilitacao) throws CpfInvalidoException, TelefoneInvalidoException, DataDeHabilitacaoInvalidaException, DataDeNascimentoInvalidaException, AnosDeHabilitacaoInsuficientesException, UsuarioExisteException, CampoVazioException, UsuarioNuloException, UsuarioMenorDeIdadeException {
         if(dataDeNascimento.isBefore(LocalDate.now())){
             Period periodo = Period.between(dataDeNascimento, LocalDate.now());
             if(periodo.getYears() >= 18){
@@ -240,7 +238,6 @@ public class ControladorUsuarios implements IControladorUsuarios{
                             ccpc.getNovoCliente().setCnh(cnh);
                             ccpc.getNovoCliente().setDataDeHabilitacao(dataDeHabilitacao);
                             this.inserirUsuario(ccpc.getNovoCliente());
-                            throw new UsuarioInseridoComSucessoException();
                         }else{
                             throw new DataDeHabilitacaoInvalidaException(dataDeHabilitacao);
                         }
@@ -264,7 +261,7 @@ public class ControladorUsuarios implements IControladorUsuarios{
     }
 
     @Override
-    public List<Colaborador> listarColaboradores() {
+    public List<Usuario> listarColaboradores() {
         return repUsuarios.listarColaboradores();
     }
 
@@ -274,7 +271,7 @@ public class ControladorUsuarios implements IControladorUsuarios{
     }
 
     @Override
-    public List<Cliente> listarClientes() {
+    public List<Usuario> listarClientes() {
         return repUsuarios.listarClientes();
     }
 
